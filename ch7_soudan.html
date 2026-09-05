@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7章 相談窓口</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --akane: #c0614a; --akane-dark: #8b3d2a; --akane-light: #f9ede9; --akane-border: #e5c5bc; --akane-tag: #f4ddd8; --tx2: #444; --tx3: #666; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f0e8e4; display: flex; justify-content: center; min-height: 100vh; }
+.app { width: 100%; max-width: 430px; background: #fdf9f8; min-height: 100vh; display: flex; flex-direction: column; }
+.header { background: var(--akane); padding: 12px 16px; color: white; }
+.header-row { display: flex; align-items: center; gap: 10px; }
+.back-btn { background: rgba(255,255,255,0.25); border: none; color: white; border-radius: 50%; width: 32px; height: 32px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.header h1 { font-size: 15px; font-weight: 500; color: white; }
+.header p { font-size: 11px; opacity: 0.85; color: white; margin-top: 2px; }
+.page-indicator { background: rgba(255,255,255,0.15); padding: 4px 16px; display: flex; gap: 6px; justify-content: center; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s; }
+.dot.active { background: white; }
+.content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 80px; }
+.page { display: none; }
+.page.active { display: block; }
+.section { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 12px; }
+.section h2 { font-size: 14px; font-weight: 600; color: var(--akane-dark); margin-bottom: 10px; }
+.section h3 { font-size: 13px; font-weight: 600; color: var(--akane-dark); margin: 10px 0 6px; }
+.section p { font-size: 13px; color: var(--tx2); line-height: 1.7; }
+.step-list { list-style: none; }
+.step-list li { font-size: 12px; color: var(--tx2); padding: 5px 0; border-bottom: 0.5px solid #f0e0dc; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6; }
+.step-list li:last-child { border-bottom: none; }
+.dot-mark { color: var(--akane); font-size: 10px; flex-shrink: 0; margin-top: 5px; }
+.alert { background: #fff5f3; border: 1px solid var(--akane-border); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; display: flex; gap: 8px; align-items: flex-start; }
+.alert-icon { font-size: 18px; flex-shrink: 0; }
+.alert p { font-size: 12px; color: #6b3020; line-height: 1.6; }
+.highlight { background: var(--akane-light); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; text-align: center; }
+.highlight p { font-size: 14px; font-weight: 500; color: var(--akane-dark); line-height: 1.8; }
+.contact-card { background: white; border-radius: 12px; border: 1px solid var(--akane-border); padding: 14px 16px; margin-bottom: 10px; }
+.contact-label { font-size: 11px; color: var(--tx3); margin-bottom: 4px; }
+.contact-name { font-size: 14px; font-weight: 600; color: var(--akane-dark); margin-bottom: 8px; }
+.contact-info { font-size: 12px; color: var(--tx2); line-height: 1.8; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { background: var(--akane-tag); color: var(--akane-dark); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+.nav-btns { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: white; border-top: 1px solid var(--akane-border); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px 24px; z-index: 100; }
+.nav-btn { background: var(--akane); color: white; border: none; border-radius: 20px; padding: 8px 20px; font-size: 13px; cursor: pointer; }
+.nav-btn:disabled { background: #ddd; color: #999; }
+.page-label { font-size: 12px; color: var(--tx3); text-align: center; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="header-row">
+      <button class="back-btn" onclick="history.back()">‹</button>
+      <div>
+        <p>第7章</p>
+        <h1>相談窓口</h1>
+      </div>
+    </div>
+  </div>
+  <div class="page-indicator" id="dots"></div>
+  <div class="content">
+
+    <!-- PAGE 1: 相談してほしいこと -->
+    <div class="page active" id="page-1">
+      <div class="highlight">
+        <p>一人で抱え込まないでください。<br>どんな小さなことでも、<br>相談していいんです。</p>
+      </div>
+      <div class="section">
+        <h2>💬 こんなことを相談できます</h2>
+        <div class="tag-list">
+          <span class="tag">業務の悩み</span>
+          <span class="tag">人間関係</span>
+          <span class="tag">ハラスメント</span>
+          <span class="tag">メンタルの不調</span>
+          <span class="tag">キャリア相談</span>
+          <span class="tag">職場環境への不満</span>
+          <span class="tag">利用者対応への不安</span>
+          <span class="tag">その他なんでも</span>
+        </div>
+      </div>
+      <div class="section">
+        <h2>🔒 相談内容は守られます</h2>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>相談内容は相談者の同意なく他者に伝えることはありません</li>
+          <li><span class="dot-mark">●</span>相談したことで不利益な扱いを受けることは絶対にありません</li>
+          <li><span class="dot-mark">●</span>「こんなことで相談していいのか」と思わず、気軽に連絡してください</li>
+        </ul>
+      </div>
+      <div class="alert">
+        <div class="alert-icon">💡</div>
+        <p>「相談するほどでもないかな」と思っていることが、実は大切なサインであることがあります。敷居は低く、いつでもどうぞ。</p>
+      </div>
+    </div>
+
+    <!-- PAGE 2: 相談窓口 -->
+    <div class="page" id="page-2">
+      <div class="section">
+        <h2>📬 ハンドブック専用相談窓口</h2>
+        <p style="margin-bottom:12px;">まずはメールで気軽に相談してください。返信まで数日かかる場合がありますが、必ず対応します。</p>
+        <div class="contact-card">
+          <div class="contact-label">専用メールアドレス</div>
+          <div class="contact-name">○○@akanekai.toyama.jp</div>
+          <div class="contact-info">※メールアドレスは決定次第更新します</div>
+        </div>
+      </div>
+      <div class="section">
+        <h2>📞 ハラスメント相談窓口</h2>
+        <p style="margin-bottom:12px;">ハラスメントに関する相談は、法人本部の担当者が対応します。</p>
+        <div class="contact-card">
+          <div class="contact-label">担当者</div>
+          <div class="contact-name">本郷 智美 / 大坪 雄二</div>
+          <div class="contact-info">
+            📞 0766-29-1212<br>
+            ✉️ t-hongo@akanekai.toyama.jp<br>
+            ✉️ y-otubo@akanekai.toyama.jp
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2>👤 まず所属長へ</h2>
+        <p>日常的な業務の悩みや相談は、まず所属長（管理者・リーダー）に声をかけてください。話しにくい場合は、上記の窓口を利用してください。</p>
+      </div>
+    </div>
+
+    <!-- PAGE 3: 相談のヒント -->
+    <div class="page" id="page-3">
+      <div class="section">
+        <h2>📝 上手な相談の仕方</h2>
+        <p style="margin-bottom:10px;">うまく言葉にできなくても大丈夫です。以下を参考にしてみてください。</p>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>「いつ頃から」困っているか</li>
+          <li><span class="dot-mark">●</span>「どんな場面で」起きているか</li>
+          <li><span class="dot-mark">●</span>「どう感じているか」（つらい・怖い・不安など）</li>
+          <li><span class="dot-mark">●</span>「どうなってほしいか」（話を聞いてほしいだけでもOK）</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>🤝 あかね会の約束</h2>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>安心して意見を言える職場をつくります</li>
+          <li><span class="dot-mark">●</span>ハラスメントは絶対に許しません</li>
+          <li><span class="dot-mark">●</span>困ったときは一人で抱え込ませません</li>
+          <li><span class="dot-mark">●</span>相談してくれた職員を守ります</li>
+        </ul>
+      </div>
+      <div class="highlight">
+        <p>あなたが元気でいることが、<br>利用者さまへの支援につながります。<br>無理せず、頼ってください。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nav-btns">
+    <button class="nav-btn" id="btn-prev" onclick="changePage(-1)" disabled>‹ 前へ</button>
+    <span class="page-label" id="page-label"></span>
+    <button class="nav-btn" id="btn-next" onclick="changePage(1)">次へ ›</button>
+  </div>
+</div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+const titles = ['1. 相談できること', '2. 相談窓口', '3. 相談のヒント'];
+const dotsEl = document.getElementById('dots');
+let current = 0;
+titles.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+function goTo(idx) {
+  pages[current].classList.remove('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.remove('active');
+  current = idx;
+  pages[current].classList.add('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.add('active');
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === pages.length - 1;
+  document.getElementById('page-label').textContent = titles[current];
+  document.querySelector('.content').scrollTop = 0;
+}
+function changePage(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < pages.length) goTo(next);
+}
+goTo(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3章 キャリアパス・成長支援</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --akane: #c0614a; --akane-dark: #8b3d2a; --akane-light: #f9ede9; --akane-border: #e5c5bc; --akane-tag: #f4ddd8; --tx2: #444; --tx3: #666; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f0e8e4; display: flex; justify-content: center; min-height: 100vh; }
+.app { width: 100%; max-width: 430px; background: #fdf9f8; min-height: 100vh; display: flex; flex-direction: column; }
+.header { background: var(--akane); padding: 12px 16px; color: white; }
+.header-row { display: flex; align-items: center; gap: 10px; }
+.back-btn { background: rgba(255,255,255,0.25); border: none; color: white; border-radius: 50%; width: 32px; height: 32px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.header h1 { font-size: 15px; font-weight: 500; color: white; }
+.header p { font-size: 11px; opacity: 0.85; color: white; margin-top: 2px; }
+.page-indicator { background: rgba(255,255,255,0.15); padding: 4px 16px; display: flex; gap: 6px; justify-content: center; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s; }
+.dot.active { background: white; }
+.content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 80px; }
+.page { display: none; }
+.page.active { display: block; }
+.section { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 12px; }
+.section h2 { font-size: 14px; font-weight: 600; color: var(--akane-dark); margin-bottom: 10px; }
+.section h3 { font-size: 13px; font-weight: 600; color: var(--akane-dark); margin: 10px 0 6px; }
+.section p { font-size: 13px; color: var(--tx2); line-height: 1.7; }
+.step-list { list-style: none; }
+.step-list li { font-size: 12px; color: var(--tx2); padding: 5px 0; border-bottom: 0.5px solid #f0e0dc; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6; }
+.step-list li:last-child { border-bottom: none; }
+.dot-mark { color: var(--akane); font-size: 10px; flex-shrink: 0; margin-top: 5px; }
+.career-step { background: white; border-radius: 10px; border: 1px solid var(--akane-border); padding: 10px 14px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+.career-num { background: var(--akane); color: white; border-radius: 50%; width: 28px; height: 28px; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.career-info { flex: 1; }
+.career-title { font-size: 13px; font-weight: 600; color: var(--akane-dark); }
+.career-sub { font-size: 11px; color: var(--tx3); margin-top: 2px; }
+table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+th { background: var(--akane-tag); color: var(--akane-dark); padding: 6px 8px; text-align: left; }
+td { padding: 6px 8px; border-bottom: 0.5px solid #f0e0dc; color: var(--tx2); line-height: 1.5; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { background: var(--akane-tag); color: var(--akane-dark); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+.nav-btns { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: white; border-top: 1px solid var(--akane-border); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px 24px; z-index: 100; }
+.nav-btn { background: var(--akane); color: white; border: none; border-radius: 20px; padding: 8px 20px; font-size: 13px; cursor: pointer; }
+.nav-btn:disabled { background: #ddd; color: #999; }
+.page-label { font-size: 12px; color: var(--tx3); text-align: center; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="header-row">
+      <button class="back-btn" onclick="location.href='akanekai_handbook.html'">‹</button>
+      <div><p>第3章</p><h1>キャリアパス・成長支援</h1></div>
+    </div>
+  </div>
+  <div class="page-indicator" id="dots"></div>
+  <div class="content">
+
+    <!-- PAGE 1: 職位ステップ -->
+    <div class="page active" id="page-1">
+      <div class="section">
+        <h2>📈 あかね会のキャリアの道すじ</h2>
+        <p style="margin-bottom:12px;">入職から管理者まで7段階の職位があります。一人ひとりのペースで着実にステップアップできます。</p>
+        <div class="career-step"><div class="career-num">1</div><div class="career-info"><div class="career-title">初任者</div><div class="career-sub">入職〜　基礎を築く段階</div></div></div>
+        <div class="career-step"><div class="career-num">2</div><div class="career-info"><div class="career-title">中堅者（プリセプター）</div><div class="career-sub">経験3年以上〜　後輩指導を担う</div></div></div>
+        <div class="career-step"><div class="career-num">3</div><div class="career-info"><div class="career-title">上級者・副主任</div><div class="career-sub">経験6年以上〜　主任の補佐</div></div></div>
+        <div class="career-step"><div class="career-num">4</div><div class="career-info"><div class="career-title">主任・リーダー</div><div class="career-sub">経験9年以上〜　チームの中核</div></div></div>
+        <div class="career-step"><div class="career-num">5</div><div class="career-info"><div class="career-title">係長</div><div class="career-sub">チーム目標・業務改善を推進</div></div></div>
+        <div class="career-step"><div class="career-num">6</div><div class="career-info"><div class="career-title">課長</div><div class="career-sub">部門の目標策定・人材育成の責任者</div></div></div>
+        <div class="career-step"><div class="career-num">7</div><div class="career-info"><div class="career-title">施設長・部長</div><div class="career-sub">事業所全体の統括管理</div></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: 研修制度 -->
+    <div class="page" id="page-2">
+      <div class="section">
+        <h2>🎓 研修制度</h2>
+        <h3>全職員共通（入職時）</h3>
+        <div class="tag-list">
+          <span class="tag">新人研修・理念研修</span>
+          <span class="tag">接遇マナー研修</span>
+          <span class="tag">コンプライアンス研修</span>
+          <span class="tag">アンガーマネジメント</span>
+          <span class="tag">ハラスメント理解研修</span>
+        </div>
+        <h3>中堅（2級）以上</h3>
+        <div class="tag-list">
+          <span class="tag">ストレスマネジメント</span>
+          <span class="tag">コーチング研修</span>
+          <span class="tag">アンガーマネジメント②</span>
+        </div>
+        <h3>リーダー（3〜4級）以上</h3>
+        <div class="tag-list">
+          <span class="tag">リーダー研修</span>
+          <span class="tag">論理的思考研修</span>
+          <span class="tag">苦情対応研修</span>
+        </div>
+        <h3>管理職（5〜7級）</h3>
+        <div class="tag-list">
+          <span class="tag">マネジメント研修</span>
+          <span class="tag">リスクマネジメント</span>
+          <span class="tag">財務会計研修</span>
+          <span class="tag">チームマネジメント</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: 評価制度 -->
+    <div class="page" id="page-3">
+      <div class="section">
+        <h2>⭐ 評価制度</h2>
+        <p style="margin-bottom:10px;">頑張りが給与・賞与に反映されます。明確な基準のもとで公正に評価されます。</p>
+        <h3>昇格の基準</h3>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>経験年数の要件を満たしていること</li>
+          <li><span class="dot-mark">●</span>人事考課の評価がB以上であること</li>
+          <li><span class="dot-mark">●</span>必要な研修を受講していること</li>
+        </ul>
+        <h3>評価のポイント</h3>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>利用者さまへの支援の質</li>
+          <li><span class="dot-mark">●</span>チームへの貢献</li>
+          <li><span class="dot-mark">●</span>報告・連絡・相談の実践</li>
+          <li><span class="dot-mark">●</span>研修・自己研鑽への取り組み</li>
+          <li><span class="dot-mark">●</span>法人理念の体現</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>🏆 資格取得支援</h2>
+        <div class="tag-list">
+          <span class="tag">介護福祉士</span>
+          <span class="tag">ケアマネジャー</span>
+          <span class="tag">サービス管理責任者</span>
+          <span class="tag">社会福祉士</span>
+          <span class="tag">看護師</span>
+          <span class="tag">各種専門資格</span>
+        </div>
+        <p style="margin-top:10px;font-size:12px;color:var(--tx3);">詳細は法人本部または所属長にご相談ください。</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn" id="btn-prev" onclick="changePage(-1)" disabled>‹ 前へ</button>
+    <span class="page-label" id="page-label"></span>
+    <button class="nav-btn" id="btn-next" onclick="changePage(1)">次へ ›</button>
+  </div>
+</div>
+<script>
+const pages = document.querySelectorAll('.page');
+const titles = ['1. キャリアステップ', '2. 研修制度', '3. 評価・資格取得'];
+const dotsEl = document.getElementById('dots');
+let current = 0;
+titles.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+function goTo(idx) {
+  pages[current].classList.remove('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.remove('active');
+  current = idx;
+  pages[current].classList.add('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.add('active');
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === pages.length - 1;
+  document.getElementById('page-label').textContent = titles[current];
+  document.querySelector('.content').scrollTop = 0;
+}
+function changePage(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < pages.length) goTo(next);
+}
+goTo(0);
+</script>
+</body>
+</html>

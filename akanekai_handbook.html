@@ -4,352 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="あかね会ハンドブック">
 <title>あかね会 職員ハンドブック</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --akane: #c0614a; --akane-light: #f9ede9; --akane-mid: #e8a090;
-  --akane-border: #e5c5bc; --akane-dark: #8b3d2a;
-  --akane-tag-bg: #f4ddd8;
-  --tx: #1a1a1a; --tx2: #444444; --tx3: #666666;
-}
+:root { --akane: #c0614a; --akane-dark: #8b3d2a; --akane-light: #f9ede9; --akane-border: #e5c5bc; --akane-tag: #f4ddd8; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f0e8e4; display: flex; justify-content: center; min-height: 100vh; }
-.screen { display: none; }
-.screen.active { display: flex; flex-direction: column; }
-.app-wrap { width: 100%; max-width: 430px; background: #fdf9f8; min-height: 100vh; position: relative; }
-.status-bar { background: var(--akane); color: white; font-size: 11px; padding: 6px 16px; display: flex; justify-content: space-between; }
-.header { background: var(--akane); padding: 12px 16px 16px; color: white; }
-.header h1 { font-size: 16px; font-weight: 500; color: white; }
-.header p { font-size: 11px; opacity: 0.9; margin-top: 2px; color: white; }
-.header-row { display: flex; align-items: center; gap: 10px; }
-.back-btn { background: rgba(255,255,255,0.25); border: none; color: white; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.search-box { margin: 12px 16px 0; position: relative; }
-.search-box input { width: 100%; background: white; border: 1px solid var(--akane-border); border-radius: 12px; padding: 10px 14px 10px 36px; font-size: 13px; color: #1a1a1a; outline: none; }
-.search-box input::placeholder { color: #999; }
-.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--akane-mid); font-size: 16px; }
-.scroll-area { overflow-y: auto; padding-bottom: 80px; flex: 1; }
-.home-greeting { padding: 16px; }
-.logo-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 12px 14px; background: white; border-radius: 12px; border: 1px solid var(--akane-border); }
-.logo-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--akane); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 500; flex-shrink: 0; }
-.logo-text-sub { font-size: 11px; color: #666; }
-.logo-text-main { font-size: 15px; font-weight: 500; color: var(--akane-dark); }
-.logo-text-book { font-size: 12px; font-weight: 400; color: #666; }
-.greeting-card { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 16px; }
-.greeting-card p { font-size: 13px; color: #444; line-height: 1.6; }
-.greeting-card strong { color: var(--akane-dark); font-weight: 500; }
-.section-label { font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 500; }
-.quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
-.quick-card { background: white; border-radius: 12px; padding: 14px 12px; border: 1px solid var(--akane-border); cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; }
+.app { width: 100%; max-width: 430px; background: #fdf9f8; min-height: 100vh; }
+.header { background: var(--akane); padding: 20px 16px 24px; color: white; text-align: center; }
+.logo-circle { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: white; margin: 0 auto 10px; }
+.header-sub { font-size: 11px; opacity: 0.85; margin-bottom: 4px; }
+.header-title { font-size: 20px; font-weight: 700; }
+.header-book { font-size: 13px; opacity: 0.85; margin-top: 2px; }
+.content { padding: 16px; padding-bottom: 40px; }
+.greeting { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 20px; }
+.greeting p { font-size: 13px; color: #444; line-height: 1.7; }
+.greeting strong { color: var(--akane-dark); }
+.section-label { font-size: 12px; color: #666; font-weight: 600; margin-bottom: 10px; }
+.quick-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 24px; }
+.quick-card { background: white; border-radius: 12px; padding: 14px 12px; border: 1px solid var(--akane-border); cursor: pointer; text-align: center; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; }
 .quick-card:active { background: var(--akane-light); }
 .quick-icon { font-size: 28px; margin-bottom: 6px; }
 .quick-label { font-size: 12px; color: #333; line-height: 1.4; }
 .chapter-list { display: flex; flex-direction: column; gap: 8px; }
-.chapter-item { background: white; border-radius: 12px; padding: 12px 14px; border: 1px solid var(--akane-border); cursor: pointer; display: flex; align-items: center; gap: 12px; -webkit-tap-highlight-color: transparent; }
+.chapter-item { background: white; border-radius: 12px; padding: 12px 14px; border: 1px solid var(--akane-border); cursor: pointer; display: flex; align-items: center; gap: 12px; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 .chapter-item:active { background: var(--akane-light); }
-.chapter-num { background: var(--akane-tag-bg); color: var(--akane-dark); border-radius: 50%; width: 28px; height: 28px; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chapter-num { background: var(--akane-tag); color: var(--akane-dark); border-radius: 50%; width: 30px; height: 30px; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .chapter-info { flex: 1; }
 .chapter-title { font-size: 13px; font-weight: 500; color: #1a1a1a; }
 .chapter-sub { font-size: 11px; color: #666; margin-top: 2px; }
-.chapter-arrow { color: var(--akane-mid); font-size: 18px; }
-.content-area { padding: 16px; }
-.content-section { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 12px; }
-.content-section h3 { font-size: 14px; font-weight: 500; color: var(--akane-dark); margin-bottom: 8px; }
-.content-section p { font-size: 13px; color: #333; line-height: 1.7; }
-.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.tag { background: var(--akane-tag-bg); color: var(--akane-dark); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
-.step-list { list-style: none; }
-.step-list li { font-size: 13px; color: #333; padding: 5px 0; border-bottom: 0.5px solid #f0e0dc; display: flex; align-items: center; gap: 8px; line-height: 1.5; }
-.step-list li:last-child { border-bottom: none; }
-.dot { color: var(--akane); font-size: 10px; flex-shrink: 0; }
-.step-num { background: var(--akane-tag-bg); color: var(--akane-dark); border-radius: 4px; padding: 1px 7px; font-size: 11px; font-weight: 500; flex-shrink: 0; }
-.alert-card { background: #fff5f3; border: 1px solid var(--akane-border); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; }
-.alert-icon { color: var(--akane); font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-.alert-card p { font-size: 12px; color: #6b3020; line-height: 1.6; }
-.highlight-box { background: var(--akane-light); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; border: 1px solid var(--akane-border); }
-.highlight-box p { font-size: 14px; font-weight: 500; color: var(--akane-dark); line-height: 1.7; text-align: center; }
-.season-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.season-card { background: white; border-radius: 12px; padding: 12px; border: 1px solid var(--akane-border); }
-.season-title { font-size: 13px; font-weight: 500; color: #333; margin-bottom: 8px; }
-.season-card ul { list-style: none; }
-.season-card ul li { font-size: 12px; color: #333; padding: 3px 0; border-bottom: 0.5px solid #f0e0dc; display: flex; gap: 6px; }
-.season-card ul li:last-child { border-bottom: none; }
-.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: white; border-top: 1px solid var(--akane-border); display: flex; padding: 8px 0 20px; z-index: 100; }
-.nav-item { flex: 1; text-align: center; cursor: pointer; padding: 4px 0; -webkit-tap-highlight-color: transparent; }
-.nav-icon { font-size: 22px; color: #cbb0a8; }
-.nav-label { font-size: 10px; color: #cbb0a8; display: block; margin-top: 2px; }
-.nav-item.active .nav-icon { color: var(--akane); }
-.nav-item.active .nav-label { color: var(--akane); }
+.chapter-arrow { color: var(--akane); font-size: 20px; }
 </style>
 </head>
 <body>
-<div class="app-wrap" id="app">
-
-<!-- HOME -->
-<div class="screen active" id="screen-home">
+<div class="app">
   <div class="header">
-    <p>地域とともに歩む 福祉のしごと</p>
-    <h1>あかね会 職員ハンドブック</h1>
+    <div class="logo-circle">あ</div>
+    <div class="header-sub">社会福祉法人</div>
+    <div class="header-title">あかね会</div>
+    <div class="header-book">職員ハンドブック</div>
   </div>
-  <div class="search-box">
-    <span class="search-icon">🔍</span>
-    <input type="text" placeholder="キーワードで探す（例：転倒、感染症）">
-  </div>
-  <div class="scroll-area">
-    <div class="home-greeting">
-      <div class="logo-bar">
-        <div class="logo-circle">あ</div>
-        <div>
-          <div class="logo-text-sub">社会福祉法人</div>
-          <div class="logo-text-main">あかね会</div>
-          <div class="logo-text-book">職員ハンドブック</div>
-        </div>
-      </div>
-      <div class="greeting-card"><p>困った時に開く、<strong>現場のガイド</strong>です。<br>全部覚えなくて大丈夫。必要な時に使いましょう。</p></div>
-      <div class="section-label">よく使うページ</div>
-      <div class="quick-grid">
-        <div class="quick-card" onclick="go('screen-taicho')"><div class="quick-icon">🫀</div><div class="quick-label">体調変化に<br>気づいた時</div></div>
-        <div class="quick-card" onclick="go('screen-tento')"><div class="quick-icon">⚠️</div><div class="quick-label">転倒が<br>あった時</div></div>
-        <div class="quick-card" onclick="go('screen-kansen')"><div class="quick-icon">🦠</div><div class="quick-label">感染症<br>対策</div></div>
-        <div class="quick-card" onclick="go('screen-kinkyuu')"><div class="quick-icon">🚨</div><div class="quick-label">緊急時の<br>行動</div></div>
-      </div>
-      <div class="section-label">全章を読む</div>
-      <div class="chapter-list">
-        <div class="chapter-item" onclick="go('screen-intro')"><div class="chapter-num">📖</div><div class="chapter-info"><div class="chapter-title">はじめに・法人理念</div><div class="chapter-sub">豊かな生涯を支える</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch1')"><div class="chapter-num">1</div><div class="chapter-info"><div class="chapter-title">私たちが大切にしていること</div><div class="chapter-sub">基本姿勢・地域福祉の考え方</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch2')"><div class="chapter-num">2</div><div class="chapter-info"><div class="chapter-title">福祉職としての接遇</div><div class="chapter-sub">言葉づかい・プライバシー</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch3')"><div class="chapter-num">3</div><div class="chapter-info"><div class="chapter-title">こんな時どうする？</div><div class="chapter-sub">体調変化・転倒・誤薬など</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch4')"><div class="chapter-num">4</div><div class="chapter-info"><div class="chapter-title">チーム連携</div><div class="chapter-sub">ホウレンソウ・他職種連携</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch5')"><div class="chapter-num">5</div><div class="chapter-info"><div class="chapter-title">地域とのつながり</div><div class="chapter-sub">地域交流・行事参加</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch6')"><div class="chapter-num">6</div><div class="chapter-info"><div class="chapter-title">季節ごとの支援</div><div class="chapter-sub">春夏秋冬・富山の備え</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-kansen')"><div class="chapter-num">7</div><div class="chapter-info"><div class="chapter-title">感染症対策</div><div class="chapter-sub">基本行動・体調不良時</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-kinkyuu')"><div class="chapter-num">8</div><div class="chapter-info"><div class="chapter-title">緊急時の行動</div><div class="chapter-sub">火災・地震・大雪</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch9')"><div class="chapter-num">9</div><div class="chapter-info"><div class="chapter-title">外国人職員とともに働く</div><div class="chapter-sub">多様性・文化の理解</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch10')"><div class="chapter-num">10</div><div class="chapter-info"><div class="chapter-title">新人職員さんへ</div><div class="chapter-sub">最初からできなくて大丈夫</div></div><div class="chapter-arrow">›</div></div>
-        <div class="chapter-item" onclick="go('screen-ch11')"><div class="chapter-num">11</div><div class="chapter-info"><div class="chapter-title">働く自分も大切にする</div><div class="chapter-sub">セルフケア・チームで支える</div></div><div class="chapter-arrow">›</div></div>
-      </div>
+  <div class="content">
+    <div class="greeting">
+      <p>困った時に開く、<strong>現場のガイド</strong>です。<br>全部覚えなくて大丈夫。必要な時に使いましょう。</p>
     </div>
-  </div>
-  <div class="bottom-nav">
-    <div class="nav-item active"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div>
-    <div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div>
-    <div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div>
-    <div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div>
-  </div>
-</div>
-
-<!-- INTRO -->
-<div class="screen" id="screen-intro">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">はじめに</p><h1>法人理念</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>📜 法人理念</h3><p style="font-size:16px;font-weight:500;color:var(--akane-dark);margin-bottom:8px;">『豊かな生涯を支える』</p><p style="font-size:12px;color:#666;">〜夢をもち、挑戦を続けるトータルサポート法人〜</p></div>
-    <div class="content-section"><h3>❤️ 支援とは</h3><p>「できないこと」よりも、<strong style="color:var(--akane-dark);">「できること」「続けられること」「その人らしさ」</strong>を大切にしています。</p><br><p>支援とは、代わりにやることではなく、その人の暮らしを<strong style="color:var(--akane-dark);">一緒に支えること</strong>です。</p></div>
-    <div class="content-section"><h3>📌 このハンドブックについて</h3><div class="tag-list"><span class="tag">困った時に確認できる</span><span class="tag">新人でも安心</span><span class="tag">考え方を共有</span><span class="tag">現場で使うガイド</span></div><p style="margin-top:10px;font-size:12px;color:#666;">全部覚える必要はありません。必要な時に開き、少しずつ身につけていきましょう。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH1 -->
-<div class="screen" id="screen-ch1">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第1章</p><h1>私たちが大切にしていること</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🏘️ 地域に根ざす福祉とは</h3><p>利用者さまの暮らしは、ご家族・近所の方・地域行事・医療機関・ボランティアなど、さまざまな人とつながっています。</p><br><p style="font-weight:500;color:var(--akane-dark);">"地域の暮らしを一緒につくる存在" でありたいと考えています。</p></div>
-    <div class="content-section"><h3>✅ 職員としての基本姿勢</h3><ul class="step-list"><li><span class="dot">●</span>あいさつを大切にする</li><li><span class="dot">●</span>相手の話を最後まで聞く</li><li><span class="dot">●</span>決めつけずに考える</li><li><span class="dot">●</span>チームで支える</li><li><span class="dot">●</span>記録を大切にする</li></ul></div>
-    <div class="content-section"><h3>📝 記録について</h3><p>記録は自分を守るためだけではありません。利用者さまの生活を、チームで支えるための大切な情報です。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH2 -->
-<div class="screen" id="screen-ch2">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第2章</p><h1>福祉職としての接遇</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>💬 言葉づかい</h3><ul class="step-list"><li><span class="dot">●</span>命令口調にならない</li><li><span class="dot">●</span>子ども扱いしない</li><li><span class="dot">●</span>急がせる言い方を避ける</li><li><span class="dot">●</span>相手のペースを尊重する</li></ul></div>
-    <div class="content-section"><h3>🔒 プライバシーへの配慮</h3><ul class="step-list"><li><span class="dot">●</span>個人情報を大声で話さない</li><li><span class="dot">●</span>利用者さまの前で私語を続けない</li><li><span class="dot">●</span>支援中の羞恥心に配慮する</li></ul></div>
-    <div class="content-section"><h3>👕 身だしなみ</h3><div class="tag-list"><span class="tag">清潔感</span><span class="tag">動きやすさ</span><span class="tag">安全性</span><span class="tag">不快感を与えない</span></div></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH3 -->
-<div class="screen" id="screen-ch3">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>こんな時どうする？</h1></div></div></div>
-  <div class="scroll-area content-area">
+    <div class="section-label">📌 よく使うページ</div>
+    <div class="quick-grid">
+      <a class="quick-card" href="ch6_handbook.html"><div class="quick-icon">⚠️</div><div class="quick-label">転倒が<br>あった時</div></a>
+      <a class="quick-card" href="ch6_handbook.html"><div class="quick-icon">🦠</div><div class="quick-label">感染症<br>対策</div></a>
+      <a class="quick-card" href="ch6_handbook.html"><div class="quick-icon">🚨</div><div class="quick-label">緊急時の<br>行動</div></a>
+      <a class="quick-card" href="ch7_soudan.html"><div class="quick-icon">💬</div><div class="quick-label">相談<br>窓口</div></a>
+    </div>
+    <div class="section-label">📖 全章を読む</div>
     <div class="chapter-list">
-      <div class="chapter-item" onclick="go('screen-taicho')"><div class="chapter-num">🫀</div><div class="chapter-info"><div class="chapter-title">体調変化に気づいた時</div><div class="chapter-sub">確認すること・対応フロー</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('screen-tento')"><div class="chapter-num">⚠️</div><div class="chapter-info"><div class="chapter-title">転倒があった時</div><div class="chapter-sub">まず行うこと・報告の流れ</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('screen-goyaku')"><div class="chapter-num">💊</div><div class="chapter-info"><div class="chapter-title">誤薬・服薬ミスに気づいた時</div><div class="chapter-sub">隠さず・すぐ報告</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('screen-trouble')"><div class="chapter-num">😰</div><div class="chapter-info"><div class="chapter-title">利用者さま同士のトラブル</div><div class="chapter-sub">安全確保・双方の話を聞く</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('screen-kazoku')"><div class="chapter-num">👪</div><div class="chapter-info"><div class="chapter-title">ご家族から相談を受けた時</div><div class="chapter-sub">丁寧に聞く・折り返し確認</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('screen-chiiki-q')"><div class="chapter-num">📍</div><div class="chapter-info"><div class="chapter-title">地域の方から問い合わせがあった時</div><div class="chapter-sub">担当部署へつなぐ</div></div><div class="chapter-arrow">›</div></div>
+      <a class="chapter-item" href="ch1_houjin.html"><div class="chapter-num">1</div><div class="chapter-info"><div class="chapter-title">法人について</div><div class="chapter-sub">理念・理事長メッセージ・沿革・施設一覧</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch2_senpai.html"><div class="chapter-num">2</div><div class="chapter-info"><div class="chapter-title">先輩たちの声</div><div class="chapter-sub">4名のリアルな声・体験談</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch3_career.html"><div class="chapter-num">3</div><div class="chapter-info"><div class="chapter-title">キャリアパス・成長支援</div><div class="chapter-sub">7段階の職位・研修制度・評価制度</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch4_kihon.html"><div class="chapter-num">4</div><div class="chapter-info"><div class="chapter-title">職員としての基本</div><div class="chapter-sub">服務・接遇・身だしなみ・SNS・ハラスメント</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch5_kinmu.html"><div class="chapter-num">5</div><div class="chapter-info"><div class="chapter-title">勤務について</div><div class="chapter-sub">勤務時間・有給・産休育休</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch6_handbook.html"><div class="chapter-num">6</div><div class="chapter-info"><div class="chapter-title">現場の基本対応</div><div class="chapter-sub">転倒・感染症・緊急時・災害対応</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch7_soudan.html"><div class="chapter-num">7</div><div class="chapter-info"><div class="chapter-title">相談窓口</div><div class="chapter-sub">業務・ハラスメント・メンタル相談</div></div><div class="chapter-arrow">›</div></a>
+      <a class="chapter-item" href="ch8_fukuri.html"><div class="chapter-num">8</div><div class="chapter-info"><div class="chapter-title">福利厚生・各種手続き</div><div class="chapter-sub">健康診断・育休・マイカー・規程集</div></div><div class="chapter-arrow">›</div></a>
     </div>
   </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
 </div>
-
-<!-- CH4 -->
-<div class="screen" id="screen-ch4">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第4章</p><h1>チーム連携</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🔄 報告・連絡・相談（ホウレンソウ）</h3><ul class="step-list"><li><span style="color:var(--akane);font-size:16px;font-weight:500;flex-shrink:0;">報</span>起きたことを伝える</li><li><span style="color:var(--akane);font-size:16px;font-weight:500;flex-shrink:0;">連</span>必要な人へ共有する</li><li><span style="color:var(--akane);font-size:16px;font-weight:500;flex-shrink:0;">相</span>判断に迷った時に確認する</li></ul></div>
-    <div class="content-section"><h3>ℹ️ 情報共有で大切なこと</h3><ul class="step-list"><li><span class="dot">●</span>思い込みで伝えない</li><li><span class="dot">●</span>主観だけで話さない</li><li><span class="dot">●</span>「事実」を整理する</li><li><span class="dot">●</span>緊急性を判断する</li></ul></div>
-    <div class="content-section"><h3>👥 他職種連携</h3><div class="tag-list"><span class="tag">介護職</span><span class="tag">看護職</span><span class="tag">相談員</span><span class="tag">ケアマネ</span><span class="tag">支援員</span><span class="tag">調理員</span><span class="tag">事務職</span><span class="tag">医療機関</span></div></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH5 -->
-<div class="screen" id="screen-ch5">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第5章</p><h1>地域とのつながり</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🎉 地域交流の目的</h3><div class="tag-list"><span class="tag">孤立防止</span><span class="tag">世代交流</span><span class="tag">地域理解</span><span class="tag">防災協力</span><span class="tag">認知症理解</span><span class="tag">福祉理解</span></div></div>
-    <div class="content-section"><h3>📅 地域行事への参加例</h3><ul class="step-list"><li><span class="dot">●</span>夏祭り・敬老会</li><li><span class="dot">●</span>清掃活動・防災訓練</li><li><span class="dot">●</span>子ども交流・地域サロン</li><li><span class="dot">●</span>文化祭・認知症カフェ</li></ul></div>
-    <div class="content-section"><h3>❤️ 大切にしていること</h3><ul class="step-list"><li><span class="dot">●</span>笑顔で迎える</li><li><span class="dot">●</span>声をかける</li><li><span class="dot">●</span>無理をしない・継続する</li><li><span class="dot">●</span>地域の方への感謝を忘れない</li></ul></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH6 -->
-<div class="screen" id="screen-ch6">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第6章</p><h1>季節ごとの支援</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="season-grid">
-      <div class="season-card"><div class="season-title">🌸 春</div><ul><li><span class="dot">●</span>新生活支援</li><li><span class="dot">●</span>お花見</li><li><span class="dot">●</span>環境変化への配慮</li><li><span class="dot">●</span>花粉症対応</li></ul></div>
-      <div class="season-card"><div class="season-title">☀️ 夏</div><ul><li><span class="dot">●</span>熱中症予防</li><li><span class="dot">●</span>水分補給</li><li><span class="dot">●</span>食中毒予防</li><li><span class="dot">●</span>夏祭り・七夕</li></ul></div>
-      <div class="season-card"><div class="season-title">🍂 秋</div><ul><li><span class="dot">●</span>敬老行事</li><li><span class="dot">●</span>収穫体験</li><li><span class="dot">●</span>紅葉外出</li><li><span class="dot">●</span>気温差に注意</li></ul></div>
-      <div class="season-card"><div class="season-title">❄️ 冬</div><ul><li><span class="dot">●</span>感染症対策</li><li><span class="dot">●</span>除雪・転倒予防</li><li><span class="dot">●</span>年末年始支援</li><li><span class="dot">●</span>暖房管理</li></ul></div>
-    </div>
-    <div class="alert-card" style="margin-top:12px;"><div class="alert-icon">❄️</div><p>富山地域では、<strong>積雪・凍結への備え</strong>も特に重要です。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH7 感染症 -->
-<div class="screen" id="screen-kansen">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第7章</p><h1>感染症対策</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🛡️ 基本行動</h3><div class="tag-list"><span class="tag">手洗い</span><span class="tag">手指消毒</span><span class="tag">換気</span><span class="tag">体調確認</span><span class="tag">マスク着用（必要時）</span></div></div>
-    <div class="content-section"><h3>🌡️ 体調不良時</h3><p>無理な出勤は、利用者さまや職員全体への感染につながります。</p><br><p style="font-weight:500;color:var(--akane-dark);">体調不良時は、早めに相談・報告しましょう。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH8 緊急時 -->
-<div class="screen" id="screen-kinkyuu">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第8章</p><h1>緊急時の行動</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="alert-card"><div class="alert-icon">⚠️</div><p>まず「<strong>自分の安全確保</strong>」。自分が安全でなければ、支援を続けることができません。</p></div>
-    <div class="content-section"><h3>🔥 火災時</h3><ul class="step-list"><li><span class="dot">●</span>周囲へ知らせる</li><li><span class="dot">●</span>初期消火</li><li><span class="dot">●</span>避難誘導・人数確認</li><li><span class="dot">●</span>管理者報告</li></ul></div>
-    <div class="content-section"><h3>🌊 地震時</h3><ul class="step-list"><li><span class="dot">●</span>身の安全確保</li><li><span class="dot">●</span>利用者さま安全確認</li><li><span class="dot">●</span>落下物注意・建物確認</li><li><span class="dot">●</span>安否確認</li></ul></div>
-    <div class="content-section"><h3>❄️ 大雪時（富山対応）</h3><ul class="step-list"><li><span class="dot">●</span>通勤安全確認</li><li><span class="dot">●</span>除雪・送迎ルート確認</li><li><span class="dot">●</span>転倒注意・非常食確認</li></ul></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH9 -->
-<div class="screen" id="screen-ch9">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第9章</p><h1>外国人職員とともに働く</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🌍 大切にしたいこと</h3><ul class="step-list"><li><span class="dot">●</span>ゆっくり話す</li><li><span class="dot">●</span>簡単な言葉を使う</li><li><span class="dot">●</span>否定から入らない</li><li><span class="dot">●</span>文化の違いを理解する</li><li><span class="dot">●</span>困っていないか確認する</li></ul></div>
-    <div class="highlight-box"><p>国や文化が違っても、<br>「利用者さまを大切にしたい」<br>という気持ちは同じです。</p></div>
-    <div class="content-section"><h3>🤝 お互いに学び合う</h3><p>支え合いながら、一緒に成長していきましょう。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH10 -->
-<div class="screen" id="screen-ch10">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第10章</p><h1>新人職員さんへ</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="highlight-box"><p>最初から全部できなくて<br>大丈夫です。</p></div>
-    <div class="content-section"><h3>⭐ まずはここから</h3><ul class="step-list"><li><span class="step-num">1</span>あいさつ</li><li><span class="step-num">2</span>利用者さまの名前を覚える</li><li><span class="step-num">3</span>一日の流れを知る</li><li><span class="step-num">4</span>安全を意識する</li><li><span class="step-num">5</span>困ったら聞く</li></ul></div>
-    <div class="content-section"><h3>❤️ 福祉の仕事とは</h3><p>「正解を覚える仕事」ではなく、</p><br><p style="font-weight:500;color:var(--akane-dark);font-size:14px;">「相手を思う力を育てる仕事」です。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CH11 -->
-<div class="screen" id="screen-ch11">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-home')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第11章</p><h1>働く自分も大切にする</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>😊 無理を抱え込まない</h3><ul class="step-list"><li><span class="dot">●</span>疲れた時は相談する</li><li><span class="dot">●</span>不安を共有する</li><li><span class="dot">●</span>一人で抱え込まない</li></ul></div>
-    <div class="content-section"><h3>👥 チームで支える</h3><p>困った時に助け合える職場づくりが、利用者さまへの支援につながります。</p></div>
-    <div class="highlight-box"><p>あなたが元気でいることが、<br>誰かの安心につながります。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- TAICHO -->
-<div class="screen" id="screen-taicho">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>体調変化に気づいた時</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="alert-card"><div class="alert-icon">⚠️</div><p>小さな変化が、大きな体調変化のサインになることがあります。</p></div>
-    <div class="content-section"><h3>📋 確認すること</h3><ul class="step-list"><li><span class="dot">●</span>表情・顔色</li><li><span class="dot">●</span>食事量・水分量</li><li><span class="dot">●</span>排泄状況</li><li><span class="dot">●</span>発熱・呼吸状態</li><li><span class="dot">●</span>普段との違い</li></ul></div>
-    <div class="content-section"><h3>➡️ 対応の流れ</h3><ul class="step-list"><li><span class="step-num">1</span>記録する</li><li><span class="step-num">2</span>看護職へ報告</li><li><span class="step-num">3</span>必要時ご家族へ連絡</li><li><span class="step-num">4</span>状況の観察を継続</li></ul></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- TENTO -->
-<div class="screen" id="screen-tento">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>転倒があった時</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🩺 まず行うこと</h3><ul class="step-list"><li><span class="dot">●</span>安全確認</li><li><span class="dot">●</span>意識確認</li><li><span class="dot">●</span>出血確認</li><li><span class="dot">●</span>痛み確認</li><li><span class="dot">●</span>無理に動かさない</li></ul></div>
-    <div class="content-section"><h3>➡️ その後の対応</h3><ul class="step-list"><li><span class="step-num">1</span>看護職へ報告</li><li><span class="step-num">2</span>管理者へ報告</li><li><span class="step-num">3</span>状況を記録</li><li><span class="step-num">4</span>ご家族へ連絡</li></ul></div>
-    <div class="alert-card"><div class="alert-icon">💡</div><p>「なぜ転倒したか」まで振り返ることが、再発防止につながります。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- GOYAKU -->
-<div class="screen" id="screen-goyaku">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>誤薬・服薬ミスに気づいた時</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="alert-card"><div class="alert-icon">🚨</div><p><strong>隠さない。すぐ報告する。</strong><br>ミスを責めるのではなく、再発防止につなげることが重要です。</p></div>
-    <div class="content-section"><h3>➡️ 対応の流れ</h3><ul class="step-list"><li><span class="step-num">1</span>状況確認</li><li><span class="step-num">2</span>看護職へ報告</li><li><span class="step-num">3</span>管理者へ報告</li><li><span class="step-num">4</span>記録</li><li><span class="step-num">5</span>経過観察</li></ul></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- TROUBLE -->
-<div class="screen" id="screen-trouble">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>利用者さま同士のトラブル</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>🛡️ 対応の流れ</h3><ul class="step-list"><li><span class="step-num">1</span>まず安全確保</li><li><span class="step-num">2</span>感情を落ち着かせる</li><li><span class="step-num">3</span>双方の話を聞く</li><li><span class="step-num">4</span>一人で判断しない</li><li><span class="step-num">5</span>必要時は管理者へ相談</li></ul></div>
-    <div class="alert-card"><div class="alert-icon">ℹ️</div><p>どちらかの味方にならず、双方の気持ちをまず受け止めることが大切です。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- KAZOKU -->
-<div class="screen" id="screen-kazoku">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>ご家族から相談を受けた時</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>👂 まずは丁寧に聞く</h3><ul class="step-list"><li><span class="dot">●</span>内容を確認する</li><li><span class="dot">●</span>ご希望を聞く</li><li><span class="dot">●</span>緊急性を判断する</li><li><span class="dot">●</span>誰に共有が必要かを考える</li></ul></div>
-    <div class="highlight-box"><p>その場で判断できない場合は、<br><strong>「確認して折り返します」</strong><br>で大丈夫です。</p></div>
-    <div class="alert-card"><div class="alert-icon">ℹ️</div><p>曖昧な返答をしないことも大切です。わからない時は正直に伝えましょう。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-<!-- CHIIKI-Q -->
-<div class="screen" id="screen-chiiki-q">
-  <div class="header"><div class="header-row"><button class="back-btn" onclick="go('screen-ch3')">‹</button><div><p style="font-size:11px;color:white;opacity:0.9;">第3章</p><h1>地域の方からの問い合わせ</h1></div></div></div>
-  <div class="scroll-area content-area">
-    <div class="content-section"><h3>📍 よくある問い合わせ例</h3><div class="tag-list"><span class="tag">見学したい</span><span class="tag">ボランティア参加</span><span class="tag">イベント参加</span><span class="tag">空き状況確認</span><span class="tag">実習相談</span></div></div>
-    <div class="highlight-box"><p>担当部署へつなぎます。<br>地域とのつながりを<br>大切にしましょう。</p></div>
-  </div>
-  <div class="bottom-nav"><div class="nav-item" onclick="go('screen-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item"><div class="nav-icon">🔍</div><span class="nav-label">検索</span></div><div class="nav-item"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div><div class="nav-item"><div class="nav-icon">👤</div><span class="nav-label">マイページ</span></div></div>
-</div>
-
-</div>
-<script>
-function go(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-</script>
 </body>
 </html>

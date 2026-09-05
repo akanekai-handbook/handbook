@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章 法人について</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --akane: #c0614a; --akane-dark: #8b3d2a; --akane-light: #f9ede9; --akane-border: #e5c5bc; --akane-tag: #f4ddd8; --tx2: #444; --tx3: #666; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f0e8e4; display: flex; justify-content: center; min-height: 100vh; }
+.app { width: 100%; max-width: 430px; background: #fdf9f8; min-height: 100vh; display: flex; flex-direction: column; }
+.header { background: var(--akane); padding: 12px 16px; color: white; }
+.header-row { display: flex; align-items: center; gap: 10px; }
+.back-btn { background: rgba(255,255,255,0.25); border: none; color: white; border-radius: 50%; width: 32px; height: 32px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.header h1 { font-size: 15px; font-weight: 500; color: white; }
+.header p { font-size: 11px; opacity: 0.85; color: white; margin-top: 2px; }
+.page-indicator { background: rgba(255,255,255,0.15); padding: 4px 16px; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s; }
+.dot.active { background: white; }
+.content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 80px; }
+.page { display: none; }
+.page.active { display: block; }
+.section { background: white; border-radius: 12px; padding: 14px 16px; border: 1px solid var(--akane-border); margin-bottom: 12px; }
+.section h2 { font-size: 14px; font-weight: 600; color: var(--akane-dark); margin-bottom: 10px; }
+.section h3 { font-size: 13px; font-weight: 600; color: var(--akane-dark); margin: 10px 0 6px; }
+.section p { font-size: 13px; color: var(--tx2); line-height: 1.7; }
+.step-list { list-style: none; }
+.step-list li { font-size: 12px; color: var(--tx2); padding: 5px 0; border-bottom: 0.5px solid #f0e0dc; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6; }
+.step-list li:last-child { border-bottom: none; }
+.dot-mark { color: var(--akane); font-size: 10px; flex-shrink: 0; margin-top: 5px; }
+.highlight { background: var(--akane-light); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; text-align: center; }
+.highlight p { font-size: 15px; font-weight: 600; color: var(--akane-dark); line-height: 1.8; }
+.highlight small { font-size: 12px; font-weight: 400; color: var(--tx3); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { background: var(--akane-tag); color: var(--akane-dark); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+th { background: var(--akane-tag); color: var(--akane-dark); padding: 6px 8px; text-align: left; }
+td { padding: 6px 8px; border-bottom: 0.5px solid #f0e0dc; color: var(--tx2); line-height: 1.5; vertical-align: top; }
+.pillar { background: white; border-radius: 12px; border: 1px solid var(--akane-border); padding: 12px 14px; margin-bottom: 10px; }
+.pillar-title { font-size: 14px; font-weight: 700; color: var(--akane); margin-bottom: 6px; }
+.pillar-body { font-size: 12px; color: var(--tx2); line-height: 1.7; }
+.nav-btns { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: white; border-top: 1px solid var(--akane-border); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px 24px; z-index: 100; }
+.nav-btn { background: var(--akane); color: white; border: none; border-radius: 20px; padding: 8px 20px; font-size: 13px; cursor: pointer; }
+.nav-btn:disabled { background: #ddd; color: #999; }
+.page-label { font-size: 12px; color: var(--tx3); text-align: center; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="header-row">
+      <button class="back-btn" onclick="location.href='akanekai_handbook.html'">‹</button>
+      <div><p>第1章</p><h1>法人について</h1></div>
+    </div>
+  </div>
+  <div class="page-indicator" id="dots"></div>
+  <div class="content">
+
+    <!-- PAGE 1: 理事長メッセージ -->
+    <div class="page active" id="page-1">
+      <div class="highlight">
+        <p>「There is a will, there is a way」<br><small>志あれば、道あり</small></p>
+      </div>
+      <div class="section">
+        <h2>📝 理事長より　職員のみなさんへ</h2>
+        <p>42歳の厄年のとき、私は立ち止まりました。「これからの人生を、どう生きるか。社会のために、何ができるか」——自問を重ねた末にたどり着いたのが、高齢者の医療・福祉の道でした。</p>
+        <br>
+        <p>今から70年前、戦争で廃墟となった日本を懸命に立て直してきた方々が、今、高齢者として私たちの身近にいます。子どもや孫のために働き、社会に貢献し続けてきた、人生の功労者です。</p>
+        <br>
+        <p style="font-weight:500;color:var(--akane-dark);">その豊かな生涯を支えることは、現代に生きる私たちの大切な使命です。</p>
+        <br>
+        <p>自分のおじいちゃんやおばあちゃんなら、こうしてあげたい——そう思える人に、ぜひあかね会で働いてほしいと思っています。</p>
+        <br>
+        <p style="text-align:right;font-weight:500;color:var(--akane-dark);">理事長　栗林 実世治</p>
+      </div>
+    </div>
+
+    <!-- PAGE 2: 法人理念 -->
+    <div class="page" id="page-2">
+      <div class="highlight">
+        <p>「豊かな生涯を支える」<br><small>〜夢をもち、挑戦を続けるトータルサポート法人〜</small></p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">すべての人を</div>
+        <div class="pillar-body">「0歳の新生児から100歳を超える方」「障害のある方」「病気のある方」「はたらく職員とその家族」まで、支援が必要なすべての人に手を差し伸べます。</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">地域と共に</div>
+        <div class="pillar-body">地域社会の健康と福祉を支えます。また、地域社会に潤いと彩りを与え、生活の質や人生の質の向上に寄与します。</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">これからも</div>
+        <div class="pillar-body">職員はプロフェッショナルとしての自覚と健全な自信をもち、独創的で質の高いサービスの提供を行います。専門性の高い人材を育てるとともに、柔軟で思いやりのある職場環境づくりに努めます。</div>
+      </div>
+      <div class="section">
+        <h3>🌳 ロゴの木に込めた想い</h3>
+        <ul class="step-list">
+          <li><span class="dot-mark">●</span>幹＝差し伸べる手</li>
+          <li><span class="dot-mark">●</span>葉の丸＝支える人々</li>
+          <li><span class="dot-mark">●</span>大小＝一人ひとりの個性</li>
+          <li><span class="dot-mark">●</span>みんなで大きく育てよう＝100年企業へ</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAGE 3: 沿革 -->
+    <div class="page" id="page-3">
+      <div class="section">
+        <h2>📅 あかね会の歩み</h2>
+        <table>
+          <tr><th>年月</th><th>できごと</th></tr>
+          <tr><td>2007年11月</td><td>社会福祉法人あかね会 設立</td></tr>
+          <tr><td>2008年12月</td><td>特別養護老人ホームあさひ苑 開所（長期50床・短期10床）</td></tr>
+          <tr><td>2013年4月</td><td>あさひ苑居宅介護支援事業所 開始</td></tr>
+          <tr><td>2014年12月</td><td>あさひ苑 増床（長期40床）</td></tr>
+          <tr><td>2016年3月</td><td>複合型施設あさひの里 開所・あさひ保育園 設置</td></tr>
+          <tr><td>2017年12月</td><td>EPAフィリピン介護士候補者 受け入れ開始</td></tr>
+          <tr><td>2018年10月</td><td>万葉線あかね会ラッピング電車スタート</td></tr>
+          <tr><td>2019年4月</td><td>あさひ苑アネックス開所・あさひキッズ設置</td></tr>
+          <tr><td>2020年8月</td><td>法人本部 設置</td></tr>
+          <tr><td>2021年3月</td><td>サテライトオフィス 開所</td></tr>
+          <tr><td>2021年9月</td><td>あさひの家 開所（小規模多機能・グループホーム）</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE 4: 施設一覧 -->
+    <div class="page" id="page-4">
+      <div class="section">
+        <h2>🏠 施設・事業所一覧</h2>
+        <h3>高齢者福祉</h3>
+        <div class="tag-list">
+          <span class="tag">特養あさひ苑</span>
+          <span class="tag">あさひ苑アネックス</span>
+          <span class="tag">複合型施設あさひの里</span>
+          <span class="tag">デイサービスあさひの里</span>
+          <span class="tag">訪問介護</span>
+          <span class="tag">居宅介護支援事業所</span>
+          <span class="tag">定期巡回・随時対応型訪問介護看護</span>
+          <span class="tag">福祉用具事業</span>
+        </div>
+        <h3>障がい者支援</h3>
+        <div class="tag-list">
+          <span class="tag">グループホームあさひの家</span>
+          <span class="tag">小規模多機能型居宅介護</span>
+        </div>
+        <h3>保育</h3>
+        <div class="tag-list">
+          <span class="tag">企業主導型保育園あさひキッズ</span>
+        </div>
+        <h3>法人本部</h3>
+        <div class="tag-list">
+          <span class="tag">法人本部（高岡市）</span>
+          <span class="tag">サテライトオフィス</span>
+        </div>
+      </div>
+      <div class="section">
+        <h2>🎨 あかね色について</h2>
+        <p>法人カラーの「あかね色」は、夜明けの空を染める茜色から取っています。地域に温かく寄り添い、新しい一日の始まりとともにある存在でありたいという想いが込められています。</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn" id="btn-prev" onclick="changePage(-1)" disabled>‹ 前へ</button>
+    <span class="page-label" id="page-label"></span>
+    <button class="nav-btn" id="btn-next" onclick="changePage(1)">次へ ›</button>
+  </div>
+</div>
+<script>
+const pages = document.querySelectorAll('.page');
+const titles = ['1. 理事長メッセージ', '2. 法人理念', '3. あかね会の歩み', '4. 施設一覧'];
+const dotsEl = document.getElementById('dots');
+let current = 0;
+titles.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+function goTo(idx) {
+  pages[current].classList.remove('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.remove('active');
+  current = idx;
+  pages[current].classList.add('active');
+  dotsEl.querySelectorAll('.dot')[current].classList.add('active');
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === pages.length - 1;
+  document.getElementById('page-label').textContent = titles[current];
+  document.querySelector('.content').scrollTop = 0;
+}
+function changePage(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < pages.length) goTo(next);
+}
+goTo(0);
+</script>
+</body>
+</html>
