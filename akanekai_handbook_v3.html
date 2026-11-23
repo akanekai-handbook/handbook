@@ -130,6 +130,19 @@ td{padding:6px 8px;border-bottom:0.5px solid #f0e0dc;color:var(--tx2);line-heigh
 .q-note{padding:8px 14px;border-top:0.5px solid #f0e0dc;font-size:11px;color:var(--tx3);background:#fdf9f8;}
 .pillar[onclick]{cursor:pointer;}
 .qf{cursor:pointer;}.qf.on{background:var(--akane);color:#fff;}
+.q9{padding-bottom:14px;}
+.q9-q{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:600;color:var(--akane-dark);line-height:1.6;margin-bottom:8px;}
+.q9-no{flex-shrink:0;background:var(--akane);color:#fff;font-size:11px;padding:2px 8px;border-radius:12px;margin-top:2px;}
+.q9-a p{margin-bottom:8px;}
+.q9-a .step-list{margin:4px 0 10px;}
+.q9-sub{background:var(--akane-light);border-radius:8px;padding:8px 10px;font-size:13px;}
+.q9-note{font-size:12px;color:var(--tx3);}
+.step-n{flex-shrink:0;display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:50%;background:var(--akane);color:#fff;font-size:11px;margin-right:6px;}
+.jump{display:inline-block;margin:2px 6px 8px 0;padding:4px 10px;border:1px solid var(--akane-border);border-radius:14px;font-size:12px;color:var(--akane-dark);background:#fff;cursor:pointer;}
+.kk{display:inline-block;margin:0 2px;padding:1px 6px;border:1px dashed #b08a00;border-radius:6px;background:#fff8d6;color:#7a5c00;font-size:11px;font-weight:400;}
+.st{display:inline-block;margin:0 4px;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+.st-on{background:#e3f3e6;color:#2e6b3a;}.st-plan{background:#e4eefa;color:#2b5a8c;}.st-think{background:#fdf0dc;color:#8a5a12;}.st-future{background:#eeeeee;color:#555;}
+.st-legend{font-size:12px;color:var(--tx2);line-height:2;margin-top:8px;}
 </style>
 </head>
 <body>
@@ -154,13 +167,14 @@ td{padding:6px 8px;border-bottom:0.5px solid #f0e0dc;color:var(--tx2);line-heigh
     <div class="section-label">📖 全章を読む</div>
     <div class="chapter-list">
       <div class="chapter-item" onclick="go('s-ch1')"><div class="chapter-num">1</div><div class="chapter-info"><div class="chapter-title">法人について</div><div class="chapter-sub">理念・理事長メッセージ・沿革・施設一覧</div></div><div class="chapter-arrow">›</div></div>
-      <div class="chapter-item" onclick="go('s-ch2')"><div class="chapter-num">2</div><div class="chapter-info"><div class="chapter-title">先輩たちの声</div><div class="chapter-sub">4名のリアルな声・体験談</div></div><div class="chapter-arrow">›</div></div>
+      <div class="chapter-item" onclick="go('s-ch2')"><div class="chapter-num">2</div><div class="chapter-info"><div class="chapter-title">先輩たちの声</div><div class="chapter-sub">6名のリアルな声・体験談</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch3')"><div class="chapter-num">3</div><div class="chapter-info"><div class="chapter-title">キャリアパス・成長支援</div><div class="chapter-sub">7段階の職位・研修制度・評価制度</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch4')"><div class="chapter-num">4</div><div class="chapter-info"><div class="chapter-title">職員としての基本</div><div class="chapter-sub">服務・接遇・身だしなみ・SNS・ハラスメント</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch5')"><div class="chapter-num">5</div><div class="chapter-info"><div class="chapter-title">勤務について</div><div class="chapter-sub">勤務時間・有給・産休育休</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch6')"><div class="chapter-num">6</div><div class="chapter-info"><div class="chapter-title">現場の基本対応</div><div class="chapter-sub">転倒・感染症・緊急時・災害対応</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch7')"><div class="chapter-num">7</div><div class="chapter-info"><div class="chapter-title">相談窓口</div><div class="chapter-sub">業務・ハラスメント・メンタル相談</div></div><div class="chapter-arrow">›</div></div>
       <div class="chapter-item" onclick="go('s-ch8')"><div class="chapter-num">8</div><div class="chapter-info"><div class="chapter-title">福利厚生・各種手続き</div><div class="chapter-sub">健康診断・育休・マイカー・規程集</div></div><div class="chapter-arrow">›</div></div>
+      <div class="chapter-item" onclick="go('s-ch9')"><div class="chapter-num">9</div><div class="chapter-info"><div class="chapter-title">よくある質問</div><div class="chapter-sub">職員の声27項目への法人の回答</div></div><div class="chapter-arrow">›</div></div>
     </div>
   </div>
   <div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
@@ -184,10 +198,12 @@ td{padding:6px 8px;border-bottom:0.5px solid #f0e0dc;color:var(--tx2);line-heigh
 <div class="screen" id="s-ch2">
 <div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第2章</p><h1>先輩たちの声</h1></div></div></div>
 <div class="scroll-area"><div class="item-list">
-<div class="item-card" onclick="go('d-m')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Mさん</div><div class="item-sub">管理者・ケアマネ／入職3年目</div></div><div class="item-arrow">›</div></div>
-<div class="item-card" onclick="go('d-i')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Iさん</div><div class="item-sub">65歳・管理者・サービス管理責任者</div></div><div class="item-arrow">›</div></div>
-<div class="item-card" onclick="go('d-t1')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Tさん（介護職）</div><div class="item-sub">新卒・無資格からのスタート・入職4年目</div></div><div class="item-arrow">›</div></div>
-<div class="item-card" onclick="go('d-t2')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Tさん（看護師）</div><div class="item-sub">元介護士・入職5年目</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-yoshimura')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">吉村施設長</div><div class="item-sub">あさひ苑 施設長・業務執行理事</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-annex')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">アネックス施設長</div><div class="item-sub">あさひ苑アネックス 施設長</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-n')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Nさん</div><div class="item-sub">あさひ苑 介護職／入職11年目</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-m2')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Mさん（定期巡回）</div><div class="item-sub">あさひの里 訪問介護事業所 管理者／入職2年目</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-m')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Mさん（ケアマネ）</div><div class="item-sub">居宅介護支援事業所 管理者／入職3年目</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-i')"><div class="item-icon">👤</div><div class="item-info"><div class="item-title">Iさん</div><div class="item-sub">あさひの家 管理者・サビ管／65歳</div></div><div class="item-arrow">›</div></div>
 <a class="link-card" href="https://www.youtube.com/watch?v=DLjiz2-L1lI" target="_blank"><div class="link-card-icon">▶️</div><div class="link-card-text"><div class="link-card-title">あかね会 紹介動画</div><div class="link-card-sub">YouTubeで見る</div></div><div class="link-card-arrow">›</div></a>
 </div></div>
 <div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
@@ -199,6 +215,362 @@ td{padding:6px 8px;border-bottom:0.5px solid #f0e0dc;color:var(--tx2);line-heigh
 <div class="item-card" onclick="go('d-shokaku')"><div class="item-icon">📋</div><div class="item-info"><div class="item-title">昇格要件一覧</div><div class="item-sub">絶対要件・経験年数・評価の要件</div></div><div class="item-arrow">›</div></div>
 <div class="item-card" onclick="go('d-shikaku')"><div class="item-icon">🎓</div><div class="item-info"><div class="item-title">資格の費用負担・資格手当</div><div class="item-sub">取得・更新の費用と出勤扱い（R6.4.1現在）</div></div><div class="item-arrow">›</div></div>
 </div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-rijicho">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch1')">‹</button><div class="header-left"><p>第1章</p><h1>理事長メッセージ</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-d-rijicho" onclick="toggleBM('d-rijicho','理事長メッセージ','d-rijicho')">🔖 ブックマークに保存</button>
+
+<div class="highlight"><p>「There is a will, there is a way」<br><small>志あれば、道あり</small></p></div>
+<div class="section">
+<h2>理事長より　職員のみなさんへ</h2>
+<p>42歳の厄年のとき、私は立ち止まりました。「これからの人生を、どう生きるか。社会のために、何ができるか」——自問を重ねた末にたどり着いたのが、高齢者の医療・福祉の道でした。</p>
+<p style="margin-top:10px;">当時は60歳定年の時代でしたから、あと十数年したらそろそろ肩を叩かれる年齢になる。それなら今のうちに自分で自分の肩を叩き、独立しようと決めました。</p>
+<p style="margin-top:10px;">せっかくやるのなら、これからの世の中で必要とされる仕事をしたい。各地の学会に出席するたびに、その土地の活気ある病院を見学しました。すると、老人を扱う内科の病院が一番息盛んでした。</p>
+<h3>人生の功労者を支えることが、私たちの使命</h3>
+<p>今から70年前、戦争で廃墟となった日本を懸命な努力で立て直してきた方々が、今、高齢者として私たちの身近にいます。誰にでも親がいます。おじいさんやおばあさんもいるはずです。子どもや孫のために働き、社会に貢献し続けてきた、人生の功労者です。</p>
+<p style="margin-top:10px;font-weight:500;color:#8b3d2a;">その豊かな生涯を支えることは、現代に生きる私たちの大切な使命です。</p>
+<p style="margin-top:10px;">自分のおじいちゃんやおばあちゃんなら、こうしてあげたい——そう思える人に、ぜひあかね会で働いてほしいと思っています。いずれは私たちも、みんなお年寄りになるのですから。だからこそ——一緒に、明るい未来を築いていきましょう。</p>
+<p style="margin-top:16px;text-align:right;font-weight:500;color:#8b3d2a;">理事長　栗林 実世治</p>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-rinen">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch1')">‹</button><div class="header-left"><p>第1章</p><h1>法人理念</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-d-rinen" onclick="toggleBM('d-rinen','法人理念','d-rinen')">🔖 ブックマークに保存</button>
+
+<div class="highlight"><p>「豊かな生涯を支える」<br><small>〜夢をもち、挑戦を続けるトータルサポート法人〜</small></p></div>
+<div class="pillar"><div class="pillar-title">すべての人を</div><div class="pillar-body">「0歳の新生児から100歳を超える方」「障害のある方」「病気のある方」「はたらく職員とその家族」まで、支援が必要なすべての人に手を差し伸べます。</div></div>
+<div class="pillar"><div class="pillar-title">地域と共に</div><div class="pillar-body">地域社会の健康と福祉を支えます。また、地域社会に潤いと彩りを与え、生活の質や人生の質の向上に寄与します。</div></div>
+<div class="pillar"><div class="pillar-title">これからも</div><div class="pillar-body">職員はプロフェッショナルとしての自覚と健全な自信をもち、独創的で質の高いサービスの提供を行います。専門性の高い人材を育てるとともに、夢をもてるサービスを提供できる、柔軟で思いやりのある職場環境づくりの推進に努めます。</div></div>
+<div class="section">
+<h3>🌳 ロゴの木に込めた想い</h3>
+<ul class="step-list">
+<li><span class="dot-mark">●</span><div><strong style="color:#8b3d2a;">幹</strong>＝差し伸べる手。支援の根幹を表しています。</div></li>
+<li><span class="dot-mark">●</span><div><strong style="color:#8b3d2a;">葉の丸</strong>＝支える人々。利用者・職員・地域の方々を表しています。</div></li>
+<li><span class="dot-mark">●</span><div><strong style="color:#8b3d2a;">葉の大小</strong>＝一人ひとりの個性。多様性を大切にしています。</div></li>
+<li><span class="dot-mark">●</span><div><strong style="color:#8b3d2a;">みんなで大きく育てよう</strong>＝100年企業を目指す伸びしろを表しています。</div></li>
+</ul>
+</div>
+<div class="section"><h3>🎨 あかね色について</h3><p>法人カラーの「あかね色」は、夜明けの空を染める茜色から取っています。地域に温かく寄り添い、新しい一日の始まりとともにある存在でありたいという想いが込められています。</p></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-enkaku">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch1')">‹</button><div class="header-left"><p>第1章</p><h1>あかね会の歩み</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-d-enkaku" onclick="toggleBM('d-enkaku','あかね会の歩み','d-enkaku')">🔖 ブックマークに保存</button>
+
+<div class="section"><table>
+<tr><th>年月</th><th>できごと</th></tr>
+<tr><td>2007年11月</td><td>社会福祉法人あかね会 設立</td></tr>
+<tr><td>2008年12月</td><td>特別養護老人ホームあさひ苑 開所（長期入所50床・短期入所10床）</td></tr>
+<tr><td>2013年4月</td><td>あさひ苑居宅介護支援事業所 開始</td></tr>
+<tr><td>2014年12月</td><td>特別養護老人ホームあさひ苑 増床（長期入所40床）</td></tr>
+<tr><td>2016年3月</td><td>複合型施設あさひの里 開所・サービス付き高齢者向け住宅40室・デイサービス・訪問介護・企業内保育所あさひ保育園 設置</td></tr>
+<tr><td>2016年8月</td><td>あさひ保育園 事業所内保育施設として認可</td></tr>
+<tr><td>2016年9月</td><td>（予防）訪問介護 開始</td></tr>
+<tr><td>2017年9月</td><td>デイサービスあさひの里 定員35名に変更</td></tr>
+<tr><td>2017年12月</td><td>EPAフィリピン介護士候補者 受け入れ開始</td></tr>
+<tr><td>2018年2月</td><td>デイサービスあさひの里 定員40名に変更</td></tr>
+<tr><td>2018年10月</td><td>万葉線あかね会ラッピング電車スタート</td></tr>
+<tr><td>2019年4月</td><td>特別養護老人ホームあさひ苑アネックス 開所（長期入所60床）・企業主導型保育所あさひキッズ 設置</td></tr>
+<tr><td>2020年8月</td><td>法人本部 設置</td></tr>
+<tr><td>2020年10月</td><td>あさひ苑福祉用具事業 開始</td></tr>
+<tr><td>2021年3月</td><td>定期巡回・随時対応型訪問介護看護 サテライトオフィス 開所</td></tr>
+<tr><td>2021年4月</td><td>あかね会地域連携室 開始（予定）</td></tr>
+<tr><td>2021年9月</td><td>介護障がい者複合施設あさひの家 開所（小規模多機能型居宅介護 定員29名・障がい者グループホーム 定員7名）</td></tr>
+</table></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-shisetsu">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch1')">‹</button><div class="header-left"><p>第1章</p><h1>施設・事業所一覧</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-d-shisetsu" onclick="toggleBM('d-shisetsu','施設・事業所一覧','d-shisetsu')">🔖 ブックマークに保存</button>
+
+<div class="section"><h3>高齢者福祉事業</h3><div class="tag-list"><span class="tag">特別養護老人ホームあさひ苑</span><span class="tag">特別養護老人ホームあさひ苑アネックス</span><span class="tag">デイサービスあさひの里</span><span class="tag">あさひの里定期巡回随時対応型訪問介護</span><span class="tag">ヘルパーステーションあさひの里</span><span class="tag">あさひ苑居宅介護支援事業所</span></div></div>
+<div class="section"><h3>障がい者支援事業</h3><div class="tag-list"><span class="tag">あさひの家グループホームたいよう</span></div></div>
+<div class="section"><h3>保育事業</h3><div class="tag-list"><span class="tag">あさひ保育園</span><span class="tag">あさひキッズ</span></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-yoshimura">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>吉村施設長の声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-yoshimura" onclick="toggleBM('yoshimura','吉村施設長の声','d-yoshimura')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">吉村施設長</div><div class="profile-role">特別養護老人ホーム あさひ苑 施設長（兼 業務執行理事）</div><span class="profile-tag">元プロバスケ選手・未経験から介護の道へ</span></div>
+<div class="section">
+<h3>未経験から現場へ</h3>
+<p>小学校からプロチームまで、人生の半分以上をバスケットボールに捧げてきました。膝の手術を4回経験して引退し、栗林理事長に「一緒にやらないか」と声をかけられて福祉の世界へ。理事長の方針で、まずは介護職として1年間、現場を経験しました。</p>
+<div class="quote">「食事介助、入浴、排泄、そして夜勤。右も左もわからない私を助けてくれたのは、同年代の現場の仲間たちでした」</div>
+<p style="margin-top:8px;">その経験があるから、施設長になった今も現場への感謝を忘れず、職員への声かけを大切にしています。</p>
+<h3>大切にしていること：職員満足度（ES）</h3>
+<div class="quote">「職員が満足して、心に余裕を持って働けてこそ、サービスの質が上がると思うんです」</div>
+<p style="margin-top:8px;">年間休日120日に加え、年5日の有給取得、「誕生日有給」の推奨など、休みやすい仕組みづくりを進めています。将来は、全職員が年1回5日〜1週間ほどの連休を取って、気兼ねなく旅行に行ける職場にしたいと考えています。</p>
+<h3>みんなを支える仕組み</h3>
+<p>2026年4月から、元金沢大学教授の作業療法士が教育担当に加わり、移乗のコツなどを専門家から学べるようになりました。眠りスキャンや移乗支援ロボットで身体の負担を減らし、入職後の定期面談で新しい職員を組織全体で見守っています。</p>
+<h3>職員のみなさんへ</h3>
+<div class="quote">「私が入社した当時は1施設・50名以下の組織でしたが、今は200名を超えました。理念にある『夢・挑戦』を意識して、これからも前を向いて走り続けます。一人でも多くの職員が同じ方向を見て、一緒にチャレンジしてくれたら本当に心強いです」</div>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-annex">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>アネックス施設長の声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-annex" onclick="toggleBM('annex','アネックス施設長の声','d-annex')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">施設長</div><div class="profile-role">特別養護老人ホーム あさひ苑アネックス 施設長（あさひの里 兼務）</div><span class="profile-tag">介護保険制度の始まりから約30年</span></div>
+<div class="section">
+<h3>キャリアの歩み</h3>
+<p>介護保険制度が始まる直前の平成12年に介護の世界へ。在宅サービスを中心に、管理者として30年近く経験を積んできました。令和3年に、前職の上司から「新しい施設を一緒に立ち上げよう」と誘われてあかね会へ。吉村さんからバトンを受け継ぎ、現在はアネックスの施設長を務めています。</p>
+<div class="quote">「見学のとき、若いスタッフが多くて施設全体に活気があるのが新鮮でした。『ここならベテランが入っても温かく迎えてもらえる』と直感しました（笑）」</div>
+<h3>一対一で向き合う</h3>
+<p>施設介護はどうしても「一対多数」になりがちです。だからこそ、一対一になったときに相手の本音を聞ける関係をつくることを、職員にも自分にも求めています。</p>
+<div class="quote">「その方が施設に来る前にどんな人生を歩み、どんな生活をしてきたのか、ご家族はどんな構成なのか。その方の“これまで”を大切に思う気持ちを忘れないでください」</div>
+<h3>家族の絆をつなぐ「直接面会」</h3>
+<p>感染症の流行期でも、アネックスは直接面会を続けてきました。看護師・介護長・相談員・介護職員の全員が感染対策とご家族へのケアを両立させているからこそ、できていることです。</p>
+<div class="quote">「お看取りのとき、ご家族が『本当にご苦労様、ありがとう』と声をかける姿を見ると、最期まで絆をつなぐお手伝いができたんだなと、心から嬉しくなります」</div>
+<h3>「居場所」と「誇り」</h3>
+<div class="quote">「職場に自分の居場所があって、仕事に誇りを持てていれば、人間関係もいずれ自然と良くなっていくものです」</div>
+<p style="margin-top:8px;">現場の相談は、まず介護長と相談員の2人が聞いてくれます。「2人には言いづらい」ということがあれば、施設長にいつでも直接相談できます。</p>
+<h3>職員のみなさんへ</h3>
+<div class="quote">「注意されたときくらいはシュンとしてほしいけれど（笑）、それ以外はいつも笑っていてほしい。嫌なことや大変なことも笑いに変えて、周りを明るくしてくれる人が、きっといいケアをしてくれると思っています」</div>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-n">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>Nさんの声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-n" onclick="toggleBM('n','Nさんの声','d-n')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">Nさん</div><div class="profile-role">特別養護老人ホーム あさひ苑 介護職</div><span class="profile-tag">介護歴約20年・新人育成（メンター）担当</span></div>
+<div class="section">
+<h3>キャリアの歩み</h3>
+<p>大学は経済学部。大の「ばあちゃん子」で、大学2年のときの介護ボランティアがきっかけで介護の道へ。在学中にホームヘルパー2級を取り、富山市内のデイサービスで8年間（認知症デイのリーダーも経験）働きました。吉村さんに「デイサービスの立ち上げを経験してみないか」と声をかけられ、あかね会へ。その後、あさひ苑・アネックスの特養に移りました。</p>
+<h3>看取りで悩んだ日々</h3>
+<p>日中の在宅支援しか知らなかったNさんにとって、24時間の暮らしを支える特養、特に看取りは戸惑いの連続でした。「自分は何もできていないんじゃないか」と、介護職を続けられるか悩んだ時期もあったそうです。</p>
+<div class="quote">「支えになったのは、上司や仲間、そして入居者様からの『お世話してくれてありがとう』という一言でした。今は、特養の仕事のほうが自分に向いていると確信しています」</div>
+<h3>大切にしていること</h3>
+<div class="quote">「病気を見るんじゃない、その人の人生を見る」</div>
+<p style="margin-top:8px;">以前は「認知症だからこう対応する」と病気ありきで考えて、失敗したこともありました。アセスメントシートだけでは分からないことも多いので、日々の会話の中で昔話を聞き、その人の仕事や趣味などの「生活歴」を少しずつ知っていくようにしています。</p>
+<h3>機器に助けられて</h3>
+<p>Nさん自身ヘルニアもちで、移乗支援ロボット「Hug」は腰を守ってくれる欠かせない存在です。「眠りスキャン」は転倒防止だけでなく、睡眠状態の把握や看取りのときの素早い対応にも役立っています。機器に任せられる分、人とのコミュニケーションに時間と心を使えます。</p>
+<h3>新しく入った人の育て方</h3>
+<p>未経験の人には約3ヶ月の教育期間があります。まず日勤で先輩と一緒に動きを覚え、早い人は1ヶ月半〜2ヶ月で夜勤の同行を始め、4ヶ月目以降に独り立ち。独り立ちしたあともチーム全体でフォローします。</p>
+<h3>職員のみなさんへ</h3>
+<div class="quote">「一番大切なのは、新しく入った仲間が安心して長く働き続けられること。私も完璧に育成できたわけではないからこそ、『人が育ち、ずっとここで働きたいと思える環境づくり』に全力を尽くしたいです」</div>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-m2">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>Mさん（定期巡回）の声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-m2" onclick="toggleBM('m2','Mさん（定期巡回）の声','d-m2')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">Mさん</div><div class="profile-role">あさひの里 訪問介護事業所（定期巡回）管理者</div><span class="profile-tag">特養歴20年以上・入職2年目</span></div>
+<div class="section">
+<h3>キャリアの歩み</h3>
+<p>前職では20年以上、特養などで働き、介護課長も務めました。定期巡回は未経験でしたが、面接で会った採用担当や吉村さんの「スポーツのノリ」のようなサッパリした雰囲気に惹かれて入職。入職と同時に管理者になり、シフト管理をしながら自分も毎日車で現場を回っています。</p>
+<h3>定期巡回ならではのやりがい</h3>
+<p>特養の強みは、機器と高い技術で質の高いケアを安定して提供できること。定期巡回は、住み慣れた家やサ高住で、一日でも長く自分らしく暮らすためのお手伝いです。</p>
+<div class="quote">「『寝たきりだけど、最期までお酒もタバコも楽しみたい』といったその人ならではのこだわりを、どうやったら叶えられるか一緒に考えられる。それが定期巡回の醍醐味です」</div>
+<p style="margin-top:8px;">利用者さんは60名以上、平均介護度は2.1ほど。サ高住内のケアと定期巡回の両方をこの規模で行い、高岡市全域をカバーしているのはあさひの里だけです。</p>
+<h3>効率のよい働き方</h3>
+<p>安否確認や体調チェックだけなら、1回5〜10分の訪問も日常的です。手間のかかる調理は基本的になく、頼まれた買い物はルートの最後にまとめて買って夜の訪問で渡します。入浴介助やシーツ交換など時間のかかるケアは、日中に専用ルートで回ります。</p>
+<h3>みんな未経験からスタート</h3>
+<p>定期巡回の経験者は少ないので、ベテランでも最初はイチからです。約2ヶ月の同行研修では、朝・夕のルート（1ルート約15件）を一つずつ覚えていきます。最初は先輩の運転やケアを「見ているだけ」で大丈夫。いきなり一人で現場に出ることはありません。</p>
+<h3>働きやすさ</h3>
+<p>希望休は月3日、年間休日は120日。残業は基本的に「なし」で、どうしても発生しそうなときは一人に偏らないようみんなで分担しています。</p>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-m">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>Mさん（ケアマネ）の声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-m" onclick="toggleBM('m','Mさん（ケアマネ）の声','d-m')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">Mさん</div><div class="profile-role">あさひ苑 居宅介護支援事業所 管理者・ケアマネジャー</div><span class="profile-tag">営業職からの転身・入職3年目</span></div>
+<div class="section">
+<h3>キャリアの歩み</h3>
+<p>業務用冷蔵庫の営業職から福祉用具レンタルの営業に転職し、ケアマネジャーと関わるうちに自分も資格を取りました。地域包括支援センターの相談員を13年ほど務め、前職で管理者になったあと、約2年半前にあかね会へ。吉村さんとは高校時代からのバスケ仲間です。</p>
+<div class="quote">「若手が多く、30代・40代の男性職員もたくさんいて、活気とエネルギーにあふれている。『ここで新しくチャレンジしてみよう！』と思い切って飛び込みました」</div>
+<h3>補い合えるチーム</h3>
+<p>事業所はMさんを含めて4名。年齢も性別もバラバラな分、バランスのよいチームです。前任の管理者も事業所に残り、手厚くバックアップしてくれています。定期巡回ヘルパーからケアマネに転身したスタッフには、担当件数を少なめにしてマンツーマンで指導し、訪問にも同行しています。</p>
+<h3>働き方</h3>
+<p>月の平均残業は1時間未満。「自分が健康でないと良い仕事はできない」と、17時半になると「もう帰りましょう！」と声をかけています。土日祝休みが基本で、月1回ほどの日直は必ず平日に振替休日を取ります。夜間の電話はめったになく、有給も取りやすい環境です。</p>
+<h3>ケアマネとしてのやりがい</h3>
+<div class="quote">「話の腰を折らずに、最後まで聴く。しっかり受け止めてから、こちらの意見を伝える。意見が食い違うときは、押し付けずに必ず折衷案を出すようにしています」</div>
+<p style="margin-top:8px;">「対応が難しい」と引き継いだ方でも、誠心誠意向き合い続けるうちに信頼関係ができていきます。サービスが軌道に乗り、落ち着いて暮らす姿を見たときが一番嬉しい瞬間です。</p>
+<h3>職員のみなさんへ</h3>
+<div class="quote">「大切なのは経験の長さより、コミュニケーション力と、物事をポジティブに捉える姿勢。利用者様やご家族、仲間とつながっていくことがすべての仕事です。とにかく明るく、楽しく仕事ができる事業所をつくっていきたいです」</div>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-i">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch2')">‹</button><div class="header-left"><p>第2章</p><h1>Iさんの声</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-i" onclick="toggleBM('i','Iさんの声','d-i')">🔖 ブックマークに保存</button>
+
+<div class="profile-card"><div class="profile-name">Iさん</div><div class="profile-role">障がい者グループホーム「あさひの家」管理者・サービス管理責任者</div><span class="profile-tag">65歳・定年後も情熱を燃やす</span></div>
+<div class="section">
+<h3>福祉の道を志したきっかけ</h3>
+<p>特別支援学校の教員、国立病院の重度障がい者病棟での勤務を経て、定年後にあさひの家へ。言語聴覚士の資格も持ち、石川県の能登半島から毎日1時間かけて通勤しています。</p>
+<p style="margin-top:10px;">原点は、高校受験に失敗して落ち込んでいた10代のころ。下宿先のおばあさんに勧められ、重度障がい者の病棟を見学したことでした。</p>
+<div class="quote">「不自由な体を一生懸命に使って、必死に生きている姿を見たんです。建物を出た途端、涙が止まらなくなりました。その帰り道、『絶対にこの人たちの手となり足となり、彼らを笑わせる仕事に就くんだ』と決めました」</div>
+<h3>あさひの家について</h3>
+<p>主に知的障がいのある20代〜60代の方が暮らす、介護サービス包括型のグループホームです。定員は7名で、今後2階を増床して16名に広げる計画があります。入居者さんは身の回りのことを自分でできる方が多く、身体介護はありません。</p>
+<h3>大切にしていること</h3>
+<div class="quote">「ただ安全に生活するだけの支援はしない。ここで新しい趣味と出会い、生きがいが増えるような人生を送ってほしいんです」</div>
+<p style="margin-top:8px;">リビングのエアロバイクで「東京駅まで約450キロ」を目指し、毎日の走行距離を記録表に書いてもらっています。「今は長野駅を通過したよ」と声をかけると、みんな目を輝かせます。</p>
+<div class="quote">「利用者さん一人ひとりの人生を『一冊の本』だとしたら、私はその1ページに出てくる登場人物になりたい。『あの人と出会って生活が豊かになった』と言ってもらえる存在でありたいですね」</div>
+<h3>職員のみなさんへ</h3>
+<div class="quote">「利用者さんと会話して、一緒に笑い合う。それだけで自分も楽しくなれます。成長していく姿を間近で見られて、ご家族からも感謝される。お互いに幸せを感じられる仕事です」</div>
+</div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch4">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第4章</p><h1>職員としての基本</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="item-card" onclick="go('d-fumu')"><div class="item-icon">🌟</div><div class="item-info"><div class="item-title">服務の基本姿勢・接遇</div><div class="item-sub">基本原則・挨拶・言葉づかい</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-midashinami')"><div class="item-icon">👕</div><div class="item-info"><div class="item-title">身だしなみ基準</div><div class="item-sub">服装・履き物・頭髪・アクセサリー</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kojin')"><div class="item-icon">🔒</div><div class="item-info"><div class="item-title">個人情報・守秘義務</div><div class="item-sub">情報管理・退職後も継続</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-sns')"><div class="item-icon">📱</div><div class="item-info"><div class="item-title">SNS・写真・動画のルール</div><div class="item-sub">投稿禁止事項・注意点</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-harassment')"><div class="item-icon">🚫</div><div class="item-info"><div class="item-title">ハラスメント防止</div><div class="item-sub">3種類・相談窓口</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch5">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第5章</p><h1>勤務について</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="item-card" onclick="go('d-kinmu')"><div class="item-icon">🕐</div><div class="item-info"><div class="item-title">勤務時間・休日・出退勤</div><div class="item-sub">変形労働・年間120日・打刻ルール</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-yukyu')"><div class="item-icon">🌴</div><div class="item-info"><div class="item-title">年次有給休暇・特別休暇</div><div class="item-sub">付与日数・慶弔休暇</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-ikuji')"><div class="item-icon">🤱</div><div class="item-info"><div class="item-title">産休・育休・介護休業</div><div class="item-sub">取得期間・手続き方法</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch6">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第6章</p><h1>現場の基本対応</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="item-card" onclick="go('d-songen')"><div class="item-icon">🛡️</div><div class="item-info"><div class="item-title">利用者の尊厳・権利擁護</div><div class="item-sub">身体拘束・虐待防止・意思決定支援</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-jiko1')"><div class="item-icon">⚠️</div><div class="item-info"><div class="item-title">転倒・誤薬・誤嚥の対応</div><div class="item-sub">発見時の初動・ステップ手順</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-jiko2')"><div class="item-icon">🚶</div><div class="item-info"><div class="item-title">離設・送迎事故・利用者トラブル</div><div class="item-sub">行方不明・公用車事故・けんか対応</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kyukyu')"><div class="item-icon">🫀</div><div class="item-info"><div class="item-title">急変・救急対応（BLS・AED）</div><div class="item-sub">心肺蘇生・AED手順・119番</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kansen')"><div class="item-icon">🦠</div><div class="item-info"><div class="item-title">感染症対応</div><div class="item-sub">標準予防策・ノロ・嘔吐物処理</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-saigai')"><div class="item-icon">🚨</div><div class="item-info"><div class="item-title">緊急時・災害対応</div><div class="item-sub">火災・地震・大雪・停電・BCP</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kujo')"><div class="item-icon">👪</div><div class="item-info"><div class="item-title">ご家族・苦情対応</div><div class="item-sub">基本姿勢・NGワード・記録方法</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kiroku')"><div class="item-icon">📝</div><div class="item-info"><div class="item-title">記録・報告のルール</div><div class="item-sub">ヒヤリハット・介護記録・ホウレンソウ</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-qa')"><div class="item-icon">❓</div><div class="item-info"><div class="item-title">Q&A こんな時どうする？</div><div class="item-sub">よくある10の疑問</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch7">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第7章</p><h1>相談窓口</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="item-card" onclick="go('d-soudan1')"><div class="item-icon">💬</div><div class="item-info"><div class="item-title">相談できること・守秘義務</div><div class="item-sub">相談内容の種類・秘密は守られる</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-soudan2')"><div class="item-icon">📬</div><div class="item-info"><div class="item-title">相談窓口・連絡先</div><div class="item-sub">専用メール・ハラスメント相談先</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-soudan3')"><div class="item-icon">🤝</div><div class="item-info"><div class="item-title">上手な相談の仕方・あかね会の約束</div><div class="item-sub">相談のヒント・法人からの約束</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch8">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第8章</p><h1>福利厚生・各種手続き</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="item-card" onclick="go('d-fukuri1')"><div class="item-icon">🏥</div><div class="item-info"><div class="item-title">健康診断・慶弔・子育て支援</div><div class="item-sub">健診・見舞金・あさひキッズ</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-fukuri2')"><div class="item-icon">🤱</div><div class="item-info"><div class="item-title">育児休業・介護休業</div><div class="item-sub">取得期間・申請方法・ハラスメント禁止</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-mycar')"><div class="item-icon">🚗</div><div class="item-info"><div class="item-title">マイカー通勤のルール</div><div class="item-sub">申請基準・遵守事項・事故対応</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-tetsuzuki')"><div class="item-icon">📋</div><div class="item-info"><div class="item-title">入職・変更・退職の手続き</div><div class="item-sub">提出書類・変更届け・退職手順</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-kishu')"><div class="item-icon">📖</div><div class="item-info"><div class="item-title">規程集（PDF）</div><div class="item-sub">就業規則・各種規程を開く</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="s-ch9">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-home')">‹</button><div class="header-left"><p>第9章</p><h1>よくある質問</h1></div></div></div>
+<div class="scroll-area"><div class="item-list">
+<div class="section"><p>この章は、職員のみなさんから寄せられた質問・要望に、法人としてお答えするものです。すぐに実現できないものもありますが、「今どうなっているか」「これからどうするか」をできるだけ正直に書きました。状況が変わったら、このページを更新します。</p><div class="st-legend"><span class="st st-on">実施中</span>すでに行っている　<span class="st st-plan">実施予定</span>実施が決まっている<br><span class="st st-think">検討中</span>法人で検討を始めている　<span class="st st-future">今後検討</span>これから検討する</div></div>
+<div class="item-card" onclick="go('d-q9-1')"><div class="item-icon">🛡️</div><div class="item-info"><div class="item-title">安全と尊厳を守るために</div><div class="item-sub">暴言・暴力／虐待／ハラスメント／上司の言動</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-2')"><div class="item-icon">💚</div><div class="item-info"><div class="item-title">心と体の健康</div><div class="item-sub">メンタル不調の相談／腰痛予防／運動の活動</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-3')"><div class="item-icon">🚨</div><div class="item-info"><div class="item-title">事故・災害のとき</div><div class="item-sub">交通事故／災害時マニュアル</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-4')"><div class="item-icon">🌴</div><div class="item-info"><div class="item-title">休暇の取り方</div><div class="item-sub">時間単位の有給／連続休暇</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-5')"><div class="item-icon">📈</div><div class="item-info"><div class="item-title">キャリアと研修</div><div class="item-sub">キャリア相談／資格制度／外部研修／研修の要望</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-6')"><div class="item-icon">📖</div><div class="item-info"><div class="item-title">情報の確認</div><div class="item-sub">就業規則などの変更を知りたい</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-7')"><div class="item-icon">🤝</div><div class="item-info"><div class="item-title">職員同士のつながり・福利厚生</div><div class="item-sub">アンケート／サークル／ランチ会</div></div><div class="item-arrow">›</div></div>
+<div class="item-card" onclick="go('d-q9-8')"><div class="item-icon">🌸</div><div class="item-info"><div class="item-title">提案を形にする法人へ</div><div class="item-sub">挑戦できる法人に／職場見学／桜の木</div></div><div class="item-arrow">›</div></div>
+</div></div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-1">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>安全と尊厳を守るために</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q91" onclick="toggleBM('q91','安全と尊厳を守るために','d-q9-1')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q21</span>入居者からの暴言・暴力に対して、施設として職員を守るという明確な方針を示してほしい。</div><div class="q9-a"><p>あかね会は、2025年4月1日付で理事長名の「暴言・暴力・迷惑行為への対応について」を定め、各施設に掲示しています。職員への暴言、暴力、セクシュアルハラスメント、人格を傷つける言動を、許されない行為として明記しています。</p><p>利用者の尊厳を守ることと、職員の安全を守ることは、どちらも法人の責任です。<b>暴言や暴力を我慢することは、職員の仕事ではありません。</b></p><p>ただ、入居者の言動には、認知症などの症状が影響している場合もあります。その場合は、本人を責めるのではなく、チームで対応を見直します。</p><ul class="step-list"><li><span class="dot-mark">●</span><span>一人で抱え込まず、その日のうちに上司かリーダーに報告してください</span></li><li><span class="dot-mark">●</span><span>身の危険を感じたときは、まず自分の安全を確保してください<span class="kk">要確認：その場を離れてよいことを法人として明記するか</span></span></li><li><span class="dot-mark">●</span><span>同じことが繰り返される場合は、ケアの方法や担当の見直しを話し合います<span class="kk">要確認：誰が、どの場で行うか</span></span></li><li><span class="dot-mark">●</span><span>心の負担が大きいときは、相談窓口を使ってください <a class="jump" onclick="go('d-soudan2')">第7章 相談窓口・連絡先 ›</a></span></li></ul><p class="q9-sub"><b>補足</b>　ご家族や来訪者からの迷惑行為には、掲示文のとおり、退去をお願いし、必要に応じて警察へ通報します。記録の書き方や報告の様式は<span class="kk">要確認</span></p><p class="q9-sub"><b>法人の対応</b>　暴言・暴力があったときの報告から事後のケアまでの手順を、職員向けに整理します。<span class="st st-plan">実施予定</span><span class="kk">要確認：時期</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q2</span>ハラスメントや虐待（と思われる）場面を見たとき、どうすればよいですか？</div><div class="q9-a"><p>「見たけれど、確信がない」という段階でも、そのままにしないでください。</p><h3>虐待と思われる場面を見たとき</h3><p>施設で働く職員には、虐待を受けたと<b>思われる</b>利用者を見つけた場合、市町村に通報する<b>法律上の義務</b>があります。確信がなくても通報の対象です。また、<b>通報したことを理由に、解雇などの不利益な取り扱いを受けないこと</b>も法律で定められています。</p><p>法人内では、まず上司か虐待防止の担当者に報告してください。上司に言いにくい場合や、上司が関わっている場合は、法人本部の窓口に相談するか、市町村に直接通報してください。<span class="kk">要確認：高岡市の通報窓口名・連絡先</span></p><a class="jump" onclick="go('d-songen')">第6章 利用者の尊厳・権利擁護 ›</a><h3>職員同士のハラスメントを見たとき</h3><p>本人でなくても、見た人として相談できます。Q10の相談先を使ってください。<span class="kk">要確認：第三者からの相談を規程上受け付けているか</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q10</span>ハラスメントを受けた場合、どうすればよいですか？</div><div class="q9-a"><p>一人で我慢せず、早めに相談してください。</p><ul class="step-list"><li><span class="step-n">1</span><span><b>記録を残す</b>：いつ、どこで、誰に、何をされたか、見ていた人はいたかをメモしておくと、相談がスムーズになります</span></li><li><span class="step-n">2</span><span><b>相談する</b>：直属の上司のほか、上司に言いにくい場合は法人本部のハラスメント相談窓口、または専用メール（○○@akanekai.toyama.jp）に相談できます</span></li><li><span class="step-n">3</span><span><b>相談した後</b>：法人が事実を確認し、必要な対応をとります<span class="kk">要確認：対応の流れ・期間の目安</span></span></li></ul><p>相談の内容は秘密として扱います。<b>相談したことを理由に不利益な取り扱いをすることは、法律で禁止されています。</b></p><a class="jump" onclick="go('d-soudan2')">第7章 相談窓口・連絡先 ›</a><a class="jump" onclick="go('d-harassment')">第4章 ハラスメント防止 ›</a><p class="q9-sub"><b>補足</b>　法人の外にも、富山労働局の総合労働相談コーナーなど、公的な相談先があります。</p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q8</span>上司の言動が適切ではないと思うことが度々あり、ストレスになっている場合、どうすればよいですか？</div><div class="q9-a"><p>「ハラスメントと言えるか分からない」という段階でも、相談して構いません。</p><p>直属の上司に言いにくい場合は、<b>施設長、法人本部の相談窓口、専用メール</b>など、上司を通らないルートで相談できます。<b>本人の同意なく、相談した内容が当事者の上司に伝わることはありません。</b><span class="kk">要確認：この運用を法人として約束できるか</span></p><p class="q9-sub"><b>法人の対応</b>　管理職向けには、ハラスメント理解研修などを研修制度に位置づけています（第3章）。職員の声をもとに、管理職の育成を強化します。<span class="kk">要確認：時期</span></p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-2">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>心と体の健康</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q92" onclick="toggleBM('q92','心と体の健康','d-q9-2')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q11</span>メンタルヘルス不調になったとき、誰に相談すればよいですか？</div><div class="q9-a"><p>「眠れない」「仕事に行くのがつらい」と感じたら、早めに相談してください。不調は誰にでも起こるもので、相談したことで評価が下がることはありません。</p><ul class="step-list"><li><span class="dot-mark">●</span><span>直属の上司、または上司以外の話しやすい管理職</span></li><li><span class="dot-mark">●</span><span>第7章の相談窓口、専用メール（○○@akanekai.toyama.jp）</span></li><li><span class="dot-mark">●</span><span>産業医<span class="kk">要確認：産業医の有無と相談方法</span></span></li><li><span class="dot-mark">●</span><span>法人の外の窓口：厚生労働省の働く人のメンタルヘルスサイト「こころの耳」では、電話・SNS・メールで無料で相談できます</span></li></ul><p>医療機関を受診し、休む必要があると言われた場合の休職や復職の扱いは、規程に基づいて相談に応じます。<span class="kk">要確認：休職・復職に関する規程の有無</span></p><a class="jump" onclick="go('d-soudan2')">第7章 相談窓口・連絡先 ›</a></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q6</span>相談窓口のほかに、メンタル不調を早めに打ち明けるための手立てはありますか？（お手紙箱の設置など）</div><div class="q9-a"><p>「窓口に行くほどではないけれど、誰かに知ってほしい」という気持ちを受け止める方法として、次のものがあります。</p><ul class="step-list"><li><span class="dot-mark">●</span><span>専用メールは、面と向かって話しにくいことを文章で伝える方法として使えます<span class="kk">要確認：名前を書かずに送ってもよいか</span></span></li><li><span class="dot-mark">●</span><span>年1回の健康診断の機会に、体調の変化を伝えることもできます</span></li><li><span class="dot-mark">●</span><span>ストレスチェック<span class="kk">要確認：実施の有無</span></span></li></ul><a class="jump" onclick="go('d-fukuri1')">第8章 健康診断・慶弔・子育て支援 ›</a><p class="q9-sub"><b>法人の対応</b>　お手紙箱のように名前を出さずに声を届けられる仕組みを検討します。名前を出さない場合は、個別に返事ができない点もあわせて検討します。<span class="st st-future">今後検討</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q26</span>腰痛予防についての研修を実施してほしい。</div><div class="q9-a"><p>腰痛は、介護の仕事で最も多い職業病のひとつです。厚生労働省の「職場における腰痛予防対策指針」も参考に、研修の実施を検討します。<span class="st st-future">今後検討</span></p><p>あわせて、スライディングボードや移乗支援ロボット「Hug」、眠りスキャンなどの機器を活用し、体に負担の少ない介助の方法を広げていきます。2026年4月からは作業療法士が教育担当に加わり、移乗のコツを学べるようになっています（第2章 吉村施設長の声）。</p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q13</span>健康維持のために、あかね会の体を動かす活動に参加したいのですが、どうすればよいですか？</div><div class="q9-a"><p><span class="kk">要確認：現在、法人としての運動・健康づくりの活動があるか</span></p><p>法人としての定期的な活動がない場合は、職員の自主的な活動を応援する仕組みを、Q15のサークルとあわせて検討します。<span class="st st-future">今後検討</span></p><p class="q9-note">※有志でリレーマラソンやバレーボール大会に出場している職員もいます（第2章 Nさんの声）。</p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-3">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>事故・災害のとき</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q93" onclick="toggleBM('q93','事故・災害のとき','d-q9-3')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q3</span>通勤時、研修時、訪問時に交通事故にあった、または起こした場合は、どうすればよいですか？</div><div class="q9-a"><p>どの場面でも、まずは次の順で対応してください。</p><ul class="step-list"><li><span class="step-n">1</span><span>けが人の救護と、二次事故を防ぐための安全確保（必要なら119番）</span></li><li><span class="step-n">2</span><span><b>警察（110番）へ連絡</b>（物損だけの事故でも届け出が必要です）</span></li><li><span class="step-n">3</span><span>所属の施設・上司へ連絡</span></li><li><span class="step-n">4</span><span>相手の氏名・連絡先・車両ナンバー・保険会社を確認する（<b>その場で示談はしない</b>）</span></li><li><span class="step-n">5</span><span>自分の保険会社へ連絡</span></li></ul><p class="q9-sub"><b>通勤中の場合</b>　通勤途中のけがは、労災保険の「通勤災害」の対象になる場合があります。</p><a class="jump" onclick="go('d-mycar')">第8章 マイカー通勤のルール ›</a><p class="q9-sub"><b>研修や訪問など業務中の場合</b>　業務中のけがは、労災保険の「業務災害」の対象になる場合があります。公用車か私有車かによって、保険や手続きが異なります。<span class="kk">要確認：公用車の有無、私有車を業務に使うときのルール、事故時の連絡先</span></p><p>労災の手続きは法人本部が案内しますので、必ず報告してください。<span class="kk">要確認：担当部署</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q17</span>緊急時・災害時のマニュアルをいつでも見られるようにしてほしい。</div><div class="q9-a"><p>火災・地震・大雪・停電などのときに最初にとる行動は、第6章で確認できます。マニュアルの全文の保管場所は<span class="kk">要確認：各施設での保管場所／規程集PDFへの掲載の有無</span></p><a class="jump" onclick="go('d-saigai')">第6章 緊急時・災害対応 ›</a><p>停電や通信障害のときはスマートフォンで見られない場合があるので、各施設に紙のマニュアルも備えています。<span class="kk">要確認</span></p><p class="q9-sub"><b>法人の対応</b>　業務継続計画（BCP）を含むマニュアル全文を、このアプリから見られるようにすることを検討します。<span class="st st-future">今後検討</span></p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-4">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>休暇の取り方</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q94" onclick="toggleBM('q94','休暇の取り方','d-q9-4')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q1</span>時間有給の取得はいつ実現しますか？</div><div class="q9-a"><p>時間単位の年次有給休暇は、現在検討中です。<span class="st st-think">検討中</span></p><p>法律上、時間単位の年休は、職員の代表と法人が協定を結べば、年5日分まで取得できる制度です。導入にあたっては、勤怠管理の方法やシフトへの影響を確認する必要があるため、時期はまだお伝えできません。決まり次第、このページでお知らせします。</p><p>なお、今も年休は<b>1日または半日単位</b>で取得できます。</p><a class="jump" onclick="go('d-yukyu')">第5章 年次有給休暇・特別休暇 ›</a></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q9</span>旅行などで連続休暇を取りたいのですが……</div><div class="q9-a"><p>年次有給休暇は、理由を問わず取得できる職員の権利です。旅行のための連続休暇も遠慮なく申し出てください。</p><p>シフト勤務のため、早めに希望を伝えていただくほど調整しやすくなります。<b>勤務表を作る前</b>に、所属長に希望を伝えてください。<span class="kk">要確認：勤務表を作る時期と希望の締切</span></p><p class="q9-sub"><b>法人の対応</b>　連続休暇を取りやすくする工夫（取得の目安を示すなど）を検討します。<span class="st st-future">今後検討</span></p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-5">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>キャリアと研修</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q95" onclick="toggleBM('q95','キャリアと研修','d-q9-5')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q7</span>自分のキャリアを上げるためのアドバイスがほしいのですが、誰に相談すればよいですか？</div><div class="q9-a"><p>まずは第3章で、職位ごとの役割と昇格の要件を確認してください。</p><a class="jump" onclick="go('d-ladder')">第3章 キャリアパス全体図 ›</a><a class="jump" onclick="go('d-shokaku')">第3章 昇格要件一覧 ›</a><p>具体的な相談は、所属長にしてください。人事考課の面談の機会も使えます。<span class="kk">要確認：面談の有無と時期</span>所属長に相談しにくい場合は、法人本部に相談してください。<span class="kk">要確認：法人本部の担当</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q12</span>キャリアアップについての定期的な説明会はありますか？</div><div class="q9-a"><p>現在、定期的な説明会は行っていません。<span class="kk">要確認</span>キャリアの仕組みは第3章にまとめていますので、まずはそちらをご覧ください。</p><a class="jump" onclick="go('s-ch3')">第3章 キャリアパス・成長支援 ›</a><p class="q9-sub"><b>法人の対応</b>　説明会の開催や、入職時・昇格時の説明の機会について検討します。<span class="st st-future">今後検討</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q23</span>あかね会の資格制度を見えるようにしてほしい。</div><div class="q9-a"><p>職位（等級）ごとの役割と昇格の要件、資格ごとの費用負担・出勤扱い・資格手当を、第3章にまとめました。</p><a class="jump" onclick="go('d-ladder')">第3章 キャリアパス全体図 ›</a><a class="jump" onclick="go('d-shikaku')">第3章 資格の費用負担・資格手当 ›</a></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q4・Q14</span>スキルアップのために個人的に研修を受けたい。外部研修は上長の推薦が絶対条件ですか？研修案内を出してほしい。</div><div class="q9-a"><p>研修には、大きく分けて次の2種類があります。</p><ul class="step-list"><li><span class="dot-mark">●</span><span><b>法人が業務として参加を指示する研修</b>：所属長の推薦や指名で参加者を決めます。費用は法人が負担し、勤務として扱います<span class="kk">要確認</span></span></li><li><span class="dot-mark">●</span><span><b>本人の希望で参加する研修</b>：所属長に申し出てください。業務に関わる内容であれば、費用の補助や勤務扱いを相談できる場合があります<span class="kk">要確認：基準・申請方法</span></span></li></ul><p>資格の取得・更新の費用と出勤扱いは、第3章の負担表で確認できます。所属長に言いにくい場合は、法人本部に相談してください。<span class="kk">要確認</span></p><a class="jump" onclick="go('d-shikaku')">第3章 資格の費用負担・資格手当 ›</a><p class="q9-sub"><b>研修案内について</b>　外部研修の案内が職員に届いていないという声を受け止めています。このアプリなどで研修案内を出すことを検討します。<span class="st st-future">今後検討</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q20</span>パソコン操作研修、脳力アップ研修（続編）に参加したい。</div><div class="q9-a"><p>ご要望ありがとうございます。研修計画を立てるときの参考にします。<span class="st st-future">今後検討</span><span class="kk">要確認：脳力アップ研修の実施実績と、続編の予定</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q22</span>アンガーマネジメント研修を実施してほしい。</div><div class="q9-a"><p>アンガーマネジメントは、第3章の研修制度に位置づけています。<span class="kk">要確認：対象の職位・実施時期</span>対象でない職位の方の参加についても検討します。<span class="st st-future">今後検討</span></p><a class="jump" onclick="go('d-ladder')">第3章 キャリアパス全体図 ›</a></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q24</span>最低限のマナー講習を最初にやってほしい。</div><div class="q9-a"><p>あかね会の接遇・身だしなみの基準は、第4章にまとめています。<span class="kk">要確認：入職時の研修で接遇を扱っているか</span></p><a class="jump" onclick="go('d-fumu')">第4章 服務の基本姿勢・接遇 ›</a><a class="jump" onclick="go('d-midashinami')">第4章 身だしなみ基準 ›</a><p class="q9-sub"><b>法人の対応</b>　入職時の研修で、接遇とマナーを確実に扱うようにします。<span class="st st-future">今後検討</span></p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-6">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>情報の確認</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q96" onclick="toggleBM('q96','情報の確認','d-q9-6')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q16</span>就業規則などの変更があった場合、すぐに見られるようにしてほしい。</div><div class="q9-a"><p>就業規則や各種規程は、第8章の「規程集（PDF）」からいつでも確認できるようにしました。規程を変更したときは、このアプリの規程集を差し替えます。主な変更点はお知らせします。<span class="kk">要確認：お知らせの方法（掲示・アプリ・メールなど）</span></p><a class="jump" onclick="go('d-kishu')">第8章 規程集（PDF） ›</a><p class="q9-note">※災害時のマニュアル（Q17）は「事故・災害のとき」をご覧ください。</p><a class="jump" onclick="go('d-q9-3')">第9章 事故・災害のとき ›</a></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-7">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>職員同士のつながり・福利厚生</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q97" onclick="toggleBM('q97','職員同士のつながり・福利厚生','d-q9-7')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q25</span>福利厚生アンケートを実施してみては？何を求められているか知るためにも。</div><div class="q9-a"><p>職員のみなさんが何を求めているかを知るために、アンケートの実施を検討します。<span class="st st-future">今後検討</span>実施した場合は、結果と法人の対応をお知らせします。</p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q15</span>人間関係を深めるために、法人内サークル（文化部・マラソン・お茶・お花・近場の食事会など）があったらいいのでは。</div><div class="q9-a"><p>職員同士のつながりは、働きやすさにつながる大切なものです。サークル活動は、<b>参加したい人が自由に参加する</b>ことを前提に、法人としてどのような応援ができるか（場所の貸し出し、費用の一部補助など）を検討します。<span class="st st-future">今後検討</span>Q25のアンケートで、関心のある活動も聞いてみます。</p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q18</span>同じ時間に休憩をとれる職員でランチ会を開いたらどうか？</div><div class="q9-a"><p>休憩時間は、職員が自由に使える時間です。そのため、法人が開催する場合も<b>参加は自由</b>とし、参加しないことで不利になることはありません。職員の自主的な集まりとして行うことは歓迎します。法人として応援する方法は、Q15とあわせて検討します。<span class="st st-future">今後検討</span></p></div></div>
+</div>
+<div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
+</div>
+<div class="screen" id="d-q9-8">
+<div class="header"><div class="header-row"><button class="back-btn" onclick="go('s-ch9')">‹</button><div class="header-left"><p>第9章</p><h1>提案を形にする法人へ</h1></div></div></div>
+<div class="scroll-area detail-content">
+<button class="bookmark-btn" id="bm-q98" onclick="toggleBM('q98','提案を形にする法人へ','d-q9-8')">🔖 ブックマークに保存</button>
+<div class="section q9"><div class="q9-q"><span class="q9-no">Q19</span>挑戦したいと思える法人にしてほしい。</div><div class="q9-a"><p>この第9章は、職員のみなさんから寄せられた声にお答えするために作りました。すぐに実現できないものも、「検討中」のまま放っておかず、進み具合をこのページでお知らせします。</p><p>新しい取り組みのアイデアがあれば、所属長に伝えてください。専用メール（○○@akanekai.toyama.jp）でも受け付けます。<span class="kk">要確認</span></p><p class="q9-sub"><b>法人の対応</b>　職員の提案を受け付けて、検討した結果を伝える仕組みについて検討します。<span class="st st-future">今後検討</span></p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q5</span>職場見学に来たいという知り合いがいるのですが、どうすればよいですか？</div><div class="q9-a"><p>ありがとうございます。見学は歓迎します。所属長か法人本部に連絡し、日程を調整してください。<span class="kk">要確認：受付窓口</span></p><p>利用者のみなさんのプライバシーを守るため、見学中の撮影はお断りしています。見学できる場所が限られることもあります。</p></div></div><div class="section q9"><div class="q9-q"><span class="q9-no">Q27</span>花見に行けない利用者さんのために、桜の木を植えてほしい。</div><div class="q9-a"><p>利用者さんのことを考えたすてきな提案をありがとうございます。植える場所や、育てて管理する方法、費用などを確認したうえで検討します。<span class="st st-future">今後検討</span></p><p>木が育つまでには年月がかかるため、季節の外出行事や、施設内で春を感じられる工夫もあわせて考えていきます。</p></div></div>
+</div>
 <div class="bottom-nav"><div class="nav-item" onclick="go('s-home')"><div class="nav-icon">🏠</div><span class="nav-label">ホーム</span></div><div class="nav-item" onclick="go('s-bookmark')"><div class="nav-icon">🔖</div><span class="nav-label">ブックマーク</span></div></div>
 </div>
 <div class="screen" id="d-ladder">
@@ -696,7 +1068,7 @@ td{padding:6px 8px;border-bottom:0.5px solid #f0e0dc;color:var(--tx2);line-heigh
 <script>
 
 function qFilter(el,m){document.querySelectorAll('.qf').forEach(function(x){x.classList.remove('on')});el.classList.add('on');document.querySelectorAll('#qlist .qcard').forEach(function(c){c.style.display=(m&&c.dataset.allow!=='1')?'none':''});}
-const searchData = [{"key": "理事長メッセージ", "screen": "d-rijicho", "keywords": ["理事長", "栗林", "メッセージ", "志あれば"]}, {"key": "法人理念", "screen": "d-rinen", "keywords": ["理念", "豊かな生涯", "すべての人", "地域と共に", "ロゴ"]}, {"key": "あかね会の歩み", "screen": "d-enkaku", "keywords": ["沿革", "歩み", "設立", "あさひ苑", "2007"]}, {"key": "施設・事業所一覧", "screen": "d-shisetsu", "keywords": ["施設", "事業所", "あさひの里", "あさひキッズ", "グループホーム"]}, {"key": "Mさんの声", "screen": "d-m", "keywords": ["Mさん", "ケアマネ", "管理者", "残業", "有給"]}, {"key": "Iさんの声", "screen": "d-i", "keywords": ["Iさん", "グループホーム", "障がい", "65歳", "定年"]}, {"key": "Tさん（介護職）の声", "screen": "d-t1", "keywords": ["Tさん", "介護職", "新卒", "バスケ", "富山"]}, {"key": "Tさん（看護師）の声", "screen": "d-t2", "keywords": ["Tさん", "看護師", "看取り", "オンコール"]}, {"key": "服務の基本姿勢・接遇", "screen": "d-fumu", "keywords": ["服務", "接遇", "挨拶", "言葉づかい", "ことば"]}, {"key": "身だしなみ基準", "screen": "d-midashinami", "keywords": ["身だしなみ", "服装", "頭髪", "ネイル", "アクセサリー"]}, {"key": "個人情報・守秘義務", "screen": "d-kojin", "keywords": ["個人情報", "守秘義務", "プライバシー"]}, {"key": "SNS・写真・動画のルール", "screen": "d-sns", "keywords": ["SNS", "写真", "動画", "投稿"]}, {"key": "ハラスメント防止", "screen": "d-harassment", "keywords": ["ハラスメント", "パワハラ", "セクハラ", "マタハラ"]}, {"key": "勤務時間・休日・出退勤", "screen": "d-kinmu", "keywords": ["勤務時間", "休日", "出勤", "退勤", "タイムカード", "遅刻"]}, {"key": "年次有給休暇・特別休暇", "screen": "d-yukyu", "keywords": ["有給", "休暇", "忌引", "慶弔"]}, {"key": "産休・育休・介護休業", "screen": "d-ikuji", "keywords": ["産休", "育休", "育児", "介護休業", "パパ育休"]}, {"key": "利用者の尊厳・権利擁護", "screen": "d-songen", "keywords": ["尊厳", "身体拘束", "虐待", "意思決定"]}, {"key": "転倒・誤薬・誤嚥の対応", "screen": "d-jiko1", "keywords": ["転倒", "誤薬", "誤嚥", "窒息", "服薬"]}, {"key": "離設・送迎事故・利用者トラブル", "screen": "d-jiko2", "keywords": ["離設", "行方不明", "送迎", "事故", "トラブル"]}, {"key": "急変・救急対応", "screen": "d-kyukyu", "keywords": ["急変", "救急", "BLS", "AED", "心肺蘇生", "119番"]}, {"key": "感染症対応", "screen": "d-kansen", "keywords": ["感染症", "ノロ", "嘔吐", "手洗い", "標準予防策"]}, {"key": "緊急時・災害対応", "screen": "d-saigai", "keywords": ["火災", "地震", "大雪", "停電", "BCP", "災害"]}, {"key": "ご家族・苦情対応", "screen": "d-kujo", "keywords": ["苦情", "クレーム", "家族", "対応"]}, {"key": "記録・報告のルール", "screen": "d-kiroku", "keywords": ["記録", "ヒヤリハット", "ホウレンソウ", "報告"]}, {"key": "Q&A", "screen": "d-qa", "keywords": ["Q&A", "どうする", "質問"]}, {"key": "相談できること・守秘義務", "screen": "d-soudan1", "keywords": ["相談", "悩み", "メンタル", "人間関係"]}, {"key": "相談窓口・連絡先", "screen": "d-soudan2", "keywords": ["窓口", "連絡先", "メール", "電話"]}, {"key": "健康診断・慶弔・子育て支援", "screen": "d-fukuri1", "keywords": ["健康診断", "子育て", "あさひキッズ", "保育"]}, {"key": "育児休業・介護休業", "screen": "d-fukuri2", "keywords": ["育児休業", "介護休業", "育休"]}, {"key": "マイカー通勤のルール", "screen": "d-mycar", "keywords": ["マイカー", "通勤", "駐車", "自動車"]}, {"key": "入職・変更・退職の手続き", "screen": "d-tetsuzuki", "keywords": ["入職", "退職", "住所変更", "氏名変更"]}, {"key": "規程集", "screen": "d-kishu", "keywords": ["規程", "就業規則", "PDF"]}, {"key": "キャリアパス全体図", "screen": "d-ladder", "keywords": ["キャリアパス", "等級", "階段", "昇格", "職位", "1級", "2級", "3級"]}, {"key": "昇格要件一覧", "screen": "d-shokaku", "keywords": ["昇格", "要件", "絶対要件", "経験年数", "評価", "人事考課"]}, {"key": "資格の費用負担・資格手当", "screen": "d-shikaku", "keywords": ["資格", "手当", "費用", "負担", "更新", "取得", "協会費", "介護福祉士", "看護師", "ケアマネ", "研修", "出勤扱い"]}, {"key": "部長 M7", "screen": "d-g-M7", "keywords": ["部長", "M7", "M7", "研修", "等級", "昇格", "マネジメント研修（上級）", "コンプライアンス研修⑦", "リスクマネジメント研修⑦"]}, {"key": "課長 M6", "screen": "d-g-M6", "keywords": ["課長", "M6", "M6", "研修", "等級", "昇格", "財務会計研修", "人事考課者研修⑥", "キャリアパス研修", "倫理研修"]}, {"key": "係長 S5", "screen": "d-g-S5", "keywords": ["係長", "S5", "S5", "研修", "等級", "昇格", "リーダー研修⑤", "リスクマネジメント研修⑤", "マネジメント研修（基礎）", "問題解決研修"]}, {"key": "主任 S4（4級）", "screen": "d-g-S4", "keywords": ["主任", "S4", "S4（4級）", "研修", "等級", "昇格", "リーダー研修④", "苦情対応研修", "論理的思考研修④", "アンガーマネジメント研修④"]}, {"key": "副主任 S3（3級A）", "screen": "d-g-S3", "keywords": ["副主任", "S3", "S3（3級A）", "研修", "等級", "昇格", "リーダー研修③", "※接遇指導者研修", "目標管理研修", "企画力開発研修"]}, {"key": "上級者 J3・P3・N3（3級B）", "screen": "d-g-J3", "keywords": ["上級者", "J3", "J3・P3・N3（3級B）", "研修", "等級", "昇格", "リーダー研修③", "※接遇指導者研修", "目標管理研修", "企画力開発研修"]}, {"key": "中堅者 J2・P2・N2（2級A）", "screen": "d-g-J2A", "keywords": ["中堅者", "J2A", "J2・P2・N2（2級A）", "研修", "等級", "昇格", "ストレスマネジメント研修②", "アンガーマネジメント研修②", "コーチング研修②", "ハラスメント研修②"]}, {"key": "中堅者 J2・P2・N2（2級B）", "screen": "d-g-J2B", "keywords": ["中堅者", "J2B", "J2・P2・N2（2級B）", "研修", "等級", "昇格", "ストレスマネジメント研修②", "アンガーマネジメント研修②", "コーチング研修②", "ハラスメント研修②"]}, {"key": "初任者 J1・P1・N1（1級）", "screen": "d-g-J1", "keywords": ["初任者", "J1", "J1・P1・N1（1級）", "研修", "等級", "昇格", "新人研修", "※接遇マナー研修①", "理念研修", "コンプライアンス研修"]}];
+const searchData = [{"key": "理事長メッセージ", "screen": "d-rijicho", "keywords": ["理事長", "栗林", "メッセージ", "志あれば"]}, {"key": "法人理念", "screen": "d-rinen", "keywords": ["理念", "豊かな生涯", "すべての人", "地域と共に", "ロゴ"]}, {"key": "あかね会の歩み", "screen": "d-enkaku", "keywords": ["沿革", "歩み", "設立", "あさひ苑", "2007"]}, {"key": "施設・事業所一覧", "screen": "d-shisetsu", "keywords": ["施設", "事業所", "あさひの里", "あさひキッズ", "グループホーム"]}, {"key": "吉村施設長の声", "screen": "d-yoshimura", "keywords": ["吉村", "施設長", "業務執行理事", "あさひ苑", "職員満足度", "ES", "誕生日有給", "バスケ"]}, {"key": "アネックス施設長の声", "screen": "d-annex", "keywords": ["アネックス", "施設長", "一対一", "面会", "看取り", "スライディングボード", "眠りスキャン", "明るさ"]}, {"key": "Nさんの声", "screen": "d-n", "keywords": ["Nさん", "介護職", "あさひ苑", "看取り", "生活歴", "Hug", "眠りスキャン", "メンター", "教育"]}, {"key": "Mさん（定期巡回）の声", "screen": "d-m2", "keywords": ["Mさん", "定期巡回", "訪問介護", "あさひの里", "管理者", "同行研修", "ルート", "サ高住"]}, {"key": "Mさん（ケアマネ）の声", "screen": "d-m", "keywords": ["Mさん", "ケアマネ", "居宅介護支援", "管理者", "残業", "有給", "日直", "OJT"]}, {"key": "Iさんの声", "screen": "d-i", "keywords": ["Iさん", "グループホーム", "あさひの家", "障がい", "サービス管理責任者", "65歳", "定年", "エアロバイク"]}, {"key": "服務の基本姿勢・接遇", "screen": "d-fumu", "keywords": ["服務", "接遇", "挨拶", "言葉づかい", "ことば"]}, {"key": "身だしなみ基準", "screen": "d-midashinami", "keywords": ["身だしなみ", "服装", "頭髪", "ネイル", "アクセサリー"]}, {"key": "個人情報・守秘義務", "screen": "d-kojin", "keywords": ["個人情報", "守秘義務", "プライバシー"]}, {"key": "SNS・写真・動画のルール", "screen": "d-sns", "keywords": ["SNS", "写真", "動画", "投稿"]}, {"key": "ハラスメント防止", "screen": "d-harassment", "keywords": ["ハラスメント", "パワハラ", "セクハラ", "マタハラ"]}, {"key": "勤務時間・休日・出退勤", "screen": "d-kinmu", "keywords": ["勤務時間", "休日", "出勤", "退勤", "タイムカード", "遅刻"]}, {"key": "年次有給休暇・特別休暇", "screen": "d-yukyu", "keywords": ["有給", "休暇", "忌引", "慶弔"]}, {"key": "産休・育休・介護休業", "screen": "d-ikuji", "keywords": ["産休", "育休", "育児", "介護休業", "パパ育休"]}, {"key": "利用者の尊厳・権利擁護", "screen": "d-songen", "keywords": ["尊厳", "身体拘束", "虐待", "意思決定"]}, {"key": "転倒・誤薬・誤嚥の対応", "screen": "d-jiko1", "keywords": ["転倒", "誤薬", "誤嚥", "窒息", "服薬"]}, {"key": "離設・送迎事故・利用者トラブル", "screen": "d-jiko2", "keywords": ["離設", "行方不明", "送迎", "事故", "トラブル"]}, {"key": "急変・救急対応", "screen": "d-kyukyu", "keywords": ["急変", "救急", "BLS", "AED", "心肺蘇生", "119番"]}, {"key": "感染症対応", "screen": "d-kansen", "keywords": ["感染症", "ノロ", "嘔吐", "手洗い", "標準予防策"]}, {"key": "緊急時・災害対応", "screen": "d-saigai", "keywords": ["火災", "地震", "大雪", "停電", "BCP", "災害"]}, {"key": "ご家族・苦情対応", "screen": "d-kujo", "keywords": ["苦情", "クレーム", "家族", "対応"]}, {"key": "記録・報告のルール", "screen": "d-kiroku", "keywords": ["記録", "ヒヤリハット", "ホウレンソウ", "報告"]}, {"key": "Q&A", "screen": "d-qa", "keywords": ["Q&A", "どうする", "質問"]}, {"key": "相談できること・守秘義務", "screen": "d-soudan1", "keywords": ["相談", "悩み", "メンタル", "人間関係"]}, {"key": "相談窓口・連絡先", "screen": "d-soudan2", "keywords": ["窓口", "連絡先", "メール", "電話"]}, {"key": "健康診断・慶弔・子育て支援", "screen": "d-fukuri1", "keywords": ["健康診断", "子育て", "あさひキッズ", "保育"]}, {"key": "育児休業・介護休業", "screen": "d-fukuri2", "keywords": ["育児休業", "介護休業", "育休"]}, {"key": "マイカー通勤のルール", "screen": "d-mycar", "keywords": ["マイカー", "通勤", "駐車", "自動車"]}, {"key": "入職・変更・退職の手続き", "screen": "d-tetsuzuki", "keywords": ["入職", "退職", "住所変更", "氏名変更"]}, {"key": "規程集", "screen": "d-kishu", "keywords": ["規程", "就業規則", "PDF"]}, {"key": "キャリアパス全体図", "screen": "d-ladder", "keywords": ["キャリアパス", "等級", "階段", "昇格", "職位", "1級", "2級", "3級"]}, {"key": "昇格要件一覧", "screen": "d-shokaku", "keywords": ["昇格", "要件", "絶対要件", "経験年数", "評価", "人事考課"]}, {"key": "資格の費用負担・資格手当", "screen": "d-shikaku", "keywords": ["資格", "手当", "費用", "負担", "更新", "取得", "協会費", "介護福祉士", "看護師", "ケアマネ", "研修", "出勤扱い"]}, {"key": "部長 M7", "screen": "d-g-M7", "keywords": ["部長", "M7", "M7", "研修", "等級", "昇格", "マネジメント研修（上級）", "コンプライアンス研修⑦", "リスクマネジメント研修⑦"]}, {"key": "課長 M6", "screen": "d-g-M6", "keywords": ["課長", "M6", "M6", "研修", "等級", "昇格", "財務会計研修", "人事考課者研修⑥", "キャリアパス研修", "倫理研修"]}, {"key": "係長 S5", "screen": "d-g-S5", "keywords": ["係長", "S5", "S5", "研修", "等級", "昇格", "リーダー研修⑤", "リスクマネジメント研修⑤", "マネジメント研修（基礎）", "問題解決研修"]}, {"key": "主任 S4（4級）", "screen": "d-g-S4", "keywords": ["主任", "S4", "S4（4級）", "研修", "等級", "昇格", "リーダー研修④", "苦情対応研修", "論理的思考研修④", "アンガーマネジメント研修④"]}, {"key": "副主任 S3（3級A）", "screen": "d-g-S3", "keywords": ["副主任", "S3", "S3（3級A）", "研修", "等級", "昇格", "リーダー研修③", "※接遇指導者研修", "目標管理研修", "企画力開発研修"]}, {"key": "上級者 J3・P3・N3（3級B）", "screen": "d-g-J3", "keywords": ["上級者", "J3", "J3・P3・N3（3級B）", "研修", "等級", "昇格", "リーダー研修③", "※接遇指導者研修", "目標管理研修", "企画力開発研修"]}, {"key": "中堅者 J2・P2・N2（2級A）", "screen": "d-g-J2A", "keywords": ["中堅者", "J2A", "J2・P2・N2（2級A）", "研修", "等級", "昇格", "ストレスマネジメント研修②", "アンガーマネジメント研修②", "コーチング研修②", "ハラスメント研修②"]}, {"key": "中堅者 J2・P2・N2（2級B）", "screen": "d-g-J2B", "keywords": ["中堅者", "J2B", "J2・P2・N2（2級B）", "研修", "等級", "昇格", "ストレスマネジメント研修②", "アンガーマネジメント研修②", "コーチング研修②", "ハラスメント研修②"]}, {"key": "初任者 J1・P1・N1（1級）", "screen": "d-g-J1", "keywords": ["初任者", "J1", "J1・P1・N1（1級）", "研修", "等級", "昇格", "新人研修", "※接遇マナー研修①", "理念研修", "コンプライアンス研修"]}, {"key": "第9章 安全と尊厳を守るために", "screen": "d-q9-1", "keywords": ["暴言", "暴力", "カスハラ", "虐待", "通報", "ハラスメント", "上司", "相談", "Q21", "Q2", "Q10", "Q8", "よくある質問", "Q&A"]}, {"key": "第9章 心と体の健康", "screen": "d-q9-2", "keywords": ["メンタル", "こころ", "ストレス", "相談", "腰痛", "研修", "運動", "健康", "Q11", "Q6", "Q26", "Q13", "よくある質問", "Q&A"]}, {"key": "第9章 事故・災害のとき", "screen": "d-q9-3", "keywords": ["交通事故", "事故", "労災", "通勤", "訪問", "災害", "マニュアル", "BCP", "Q3", "Q17", "よくある質問", "Q&A"]}, {"key": "第9章 休暇の取り方", "screen": "d-q9-4", "keywords": ["時間有給", "時間単位", "有給", "年休", "連続休暇", "旅行", "休み", "希望休", "Q1", "Q9", "よくある質問", "Q&A"]}, {"key": "第9章 キャリアと研修", "screen": "d-q9-5", "keywords": ["キャリア", "昇格", "資格", "研修", "外部研修", "推薦", "説明会", "アンガーマネジメント", "パソコン", "マナー", "接遇", "Q7", "Q12", "Q23", "Q4", "Q14", "Q20", "Q22", "Q24", "よくある質問", "Q&A"]}, {"key": "第9章 情報の確認", "screen": "d-q9-6", "keywords": ["就業規則", "規程", "変更", "お知らせ", "PDF", "Q16", "よくある質問", "Q&A"]}, {"key": "第9章 職員同士のつながり・福利厚生", "screen": "d-q9-7", "keywords": ["福利厚生", "アンケート", "サークル", "マラソン", "お茶", "お花", "食事会", "ランチ会", "Q25", "Q15", "Q18", "よくある質問", "Q&A"]}, {"key": "第9章 提案を形にする法人へ", "screen": "d-q9-8", "keywords": ["挑戦", "提案", "アイデア", "見学", "職場見学", "桜", "花見", "Q19", "Q5", "Q27", "よくある質問", "Q&A"]}];
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   const t=document.getElementById(id);
